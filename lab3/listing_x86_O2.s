@@ -55,36 +55,41 @@ main:
         movl    %esp, %ebp // в регистр ebp копируется содержимое esp.
         pushl   %esi // помещение esi на вершину стека.
         pushl   %ebx // помещение ebx на вершину стека.
-        pushl   %ecx // помещение ecx на вершину стека.
-        subl    $44, %esp
-        movl    (%ecx), %eax
-        movl    4(%ecx), %ebx
-        cmpl    $2, %eax
-        jle     .L13
-        cmpl    $3, %eax
-        jne     .L14
-        pushl   %eax
-        pushl   $10
-        pushl   $0
-        pushl   4(%ebx)
+        pushl   %ecx // помещение ecx на вершину стека [argc].
+        subl    $44, %esp // esp = esp - 44 (резервирование места на стеке под локальные переменные).
+        movl    (%ecx), %eax // в eax копируется значение, лежащее по адресу (ecx) [argc].
+        movl    4(%ecx), %ebx // в ebx копируется значение, лежащее по адресу (ecx + 4) [argv].
+        cmpl    $2, %eax // сравнение argc с 2.
+        jle     .L13 // если argc <= 2, то переход на метку .L13.
+        cmpl    $3, %eax // сравнение argc с 3.
+        jne     .L14 // если argc != 3, то переход на метку .L14.
+
+        /* strtol */
+        pushl   %eax // помещение eax на вершину стека [тут будет результат strtol].
+        pushl   $10 // помещение 10 на вершину стека.
+        pushl   $0 // помещение 0 на вершину стека.
+        pushl   4(%ebx) // помещение argv[1] на вершину стека.
         call    strtol
-        popl    %edx
-        popl    %ecx
-        pushl   $0
-        pushl   8(%ebx)
-        movl    %eax, %esi
+
+        /* strtod */
+        popl    %edx // извлечение edx со стека.
+        popl    %ecx // извлечение ecx со стека.
+        pushl   $0 // помещение 0 на вершину стека.
+        pushl   8(%ebx) // помещение argv[2] на вершину стека.
+        movl    %eax, %esi // в esi копируется значение eax [результат strtol].
         call    strtod
-        fstpl   -48(%ebp)
-        popl    %ebx
-        popl    %eax
-        leal    -40(%ebp), %eax
-        pushl   %eax
-        pushl   $4
+        fstpl   -48(%ebp) // вытолкнули st(0) из стека FPU и положили по адресу (ebp - 48) [argument].
+
+        popl    %ebx // извлечение ebx со стека.
+        popl    %eax // извлечение eax со стека.
+        leal    -40(%ebp), %eax // в eax копируется адрес (ebp - 40) [адрес start_clock].
+        pushl   %eax // поместили адрес start_clock на вершину стека.
+        pushl   $4 // поместили CLOCK_MONOTONIC_RAW на вершину стека.
         call    clock_gettime
-        fldl    -48(%ebp)
-        fmull   .LC5
-        movl    %esi, (%esp)
-        fstpl   4(%esp)
+        fldl    -48(%ebp) // поместили argument в st(0).
+        fmull   .LC5 // перемножили st(0) [argument] и константу 0.017453.
+        movl    %esi, (%esp) // в значение, лежащее по адресу (esp), скопировали esi [number].
+        fstpl   4(%esp) // извлекли st(0) со стека FPU и поместили по адресу (esp + 4) [argument * 0.017453].
         call    CalcSin
         movl    $.LC6, (%esp)
         fstpl   4(%esp)
@@ -110,29 +115,29 @@ main:
         call    printf
         addl    $16, %esp
 .L10:
-        leal    -12(%ebp), %esp
-        xorl    %eax, %eax
-        popl    %ecx
-        popl    %ebx
-        popl    %esi
-        popl    %ebp
-        leal    -4(%ecx), %esp
-        ret
+        leal    -12(%ebp), %esp // в esp копируется адрес (ebp - 12).
+        xorl    %eax, %eax // обнуление регистра eax.
+        popl    %ecx // извлечение ecx со стека.
+        popl    %ebx // извлечение ebx со стека.
+        popl    %esi // извлечение esi со стека.
+        popl    %ebp // извлечение ebp со стека.
+        leal    -4(%ecx), %esp // в esp копируется адрес (ecx - 4).
+        ret // завершение работы подпрограммы.
 .L14:
-        subl    $12, %esp
-        pushl   $.LC4
+        subl    $12, %esp // esp = esp - 12 (резервирование места под локальные переменные).
+        pushl   $.LC4 // помещение на вершину стека строкового литерала, лежащего по метке .LC4.
         call    puts
-        addl    $16, %esp
-        jmp     .L10
+        addl    $16, %esp // esp = esp + 16.
+        jmp     .L10 // безусловный переход на метку .L10.
 .L13:
-        subl    $12, %esp
-        pushl   $.LC3
+        subl    $12, %esp // esp = esp - 12 (резервирование места под локальные переменные).
+        pushl   $.LC3 // помещение на вершину стека строкового литерала, лежащего по метке .LC3.
         call    puts
-        addl    $16, %esp
-        jmp     .L10
+        addl    $16, %esp // esp = esp + 16.
+        jmp     .L10 // безусловный переход на метку .L10.
 .LC5:
         .long   14568529
-        .long   1066524467
+        .long   1066524467 // эта константа равна: (-1)^0 * 1.0001110111110011001100000000110111100100110001010001 * 2^(1017 - 1023) = 0.017453.
 .LC7:
         .long   -400107883
-        .long   1041313291
+        .long   1041313291 // эта константа равна: (-1)^0 * 1.0001001011100000101111101000001001101101011010010101 * 2^(993 - 1023) = 0.000000001.
