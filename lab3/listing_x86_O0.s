@@ -7,10 +7,10 @@ CalcSin:
         movl    %eax, -40(%ebp) // в значение, лежащее по адресу (ebp - 40), копируется eax [4 байта argument].
         movl    %edx, -36(%ebp) // в значение, лежащее по адресу (ebp - 36), копируется edx [ещё 4 байта argument].
         fldz // st(0) = 0.
-        fstpl   -8(%ebp) // сохранение вершины стека st(0) [т.е. 0] по адресу (ebp - 8) [result].
+        fstpl   -8(%ebp) // сохранение вершины стека st(0) [т.е. 0] по адресу (ebp - 8) [result]; затем выталкивание st(0).
         movl    $1, -12(%ebp) // в значение, лежащее по адресу (ebp - 12), копируется 1 [signStatus].
         fld1 // st(0) = 1.
-        fstpl   -24(%ebp) // сохранение вершины стека st(0) [т.е. 1] по адресу (ebp - 24) [nextMultiplier].
+        fstpl   -24(%ebp) // сохранение вершины стека st(0) [т.е. 1] по адресу (ebp - 24) [nextMultiplier]; затем выталкивание st(0).
         movl    $1, -28(%ebp) // в значение, лежащее по адресу (ebp - 28), копируется 1 [factorial].
         movl    $0, -32(%ebp) // в значение, лежащее по адресу (ebp - 32), копируется 0 [i].
         jmp     .L2 // безусловный переход на метку .L2.
@@ -20,19 +20,19 @@ CalcSin:
         fdivp   %st, %st(1) // st(0) = st(0) / st(1).
         fldl    -24(%ebp) // загрузка операнда [nextMultiplier] на вершину стека (st(0) = [nextMultiplier]).
         fmulp   %st, %st(1) // st(0) = st(0) * st(1) [nextMultiplier *= (argument / factorial)].
-        fstpl   -24(%ebp) // сохранение вершины стека st(0) по адресу (ebp - 24) [поместили nextMultiplier].
+        fstpl   -24(%ebp) // сохранение вершины стека st(0) по адресу (ebp - 24) [поместили nextMultiplier]; затем выталкивание st(0).
         addl    $1, -28(%ebp) // [factorial += 1].
         fildl   -12(%ebp) // загрузка операнда [signStatus] на вершину стека (st(0) = [signStatus]).
         fmull   -24(%ebp) // st(0) = st(0) * [nextMultiplier].
         fldl    -8(%ebp) // загрузка операнда [result] на вершину стека (st(0) = [result]).
         faddp   %st, %st(1) // st(0) = st(0) + st(1) (тут лежит signStatus * nextMultiplier).
-        fstpl   -8(%ebp) // сохранение вершины стека st(0) по адресу (ebp - 8) [тут новое значение result].
+        fstpl   -8(%ebp) // сохранение вершины стека st(0) по адресу (ebp - 8) [тут новое значение result]; затем выталкивание st(0).
         fildl   -28(%ebp) // загрузка операнда [factorial] на вершину стека (st(0) = [factorial]).
         fldl    -40(%ebp) // загрузка операнда [argument] на вершину стека (st(0) = [argument]).
         fdivp   %st, %st(1) // st(0) = st(0) / st(1).
         fldl    -24(%ebp) // загрузка операнда [nextMultiplier] на вершину стека (st(0) = [nextMultiplier]).
         fmulp   %st, %st(1) // st(0) = st(0) * st(1) [nextMultiplier *= (argument / factorial)].
-        fstpl   -24(%ebp) // сохранение вершины стека st(0) по адресу (ebp - 24) [поместили nextMultiplier].
+        fstpl   -24(%ebp) // сохранение вершины стека st(0) по адресу (ebp - 24) [поместили nextMultiplier]; затем выталкивание st(0).
         addl    $1, -28(%ebp) // [factorial += 1].
         negl    -12(%ebp) // в (ebp - 12) помещается результат (0 - [signStatus]), т.е. signStatus *= (-1).
         addl    $1, -32(%ebp) // i += 1.
@@ -101,7 +101,7 @@ main:
         pushl   %eax // на вершину стека кладется argv[2].
         call    strtod // вызов функции strtod для двух верхних параметров, лежащих на стеке.
         addl    $16, %esp // esp = esp + 16.
-        fstpl   -24(%ebp) // вытолкнули st(0) из стека сопроцессора и положили по адресу (ebp - 24) (argument).
+        fstpl   -24(%ebp) // сохранение st(0) из стека сопроцессора по адресу (ebp - 24) (argument); затем выталкивание st(0).
 
         subl    $8, %esp // esp = esp - 8.
         leal    -32(%ebp), %eax // в регистр eax копируется адрес (ebp - 32).
@@ -113,13 +113,13 @@ main:
         fldl    .LC5 // в st(0) помещается константа, лежащая по метке .LC5 (0.017453).
         fmulp   %st, %st(1) // st(0) = st(0) * st(1).
         leal    -8(%esp), %esp // в esp копируется адрес (esp - 8).
-        fstpl   (%esp) // вытолкнули st(0) из стека сопроцессора и положили по адресу (esp) [тут лежит argument * 0.017453].
+        fstpl   (%esp) // сохранение st(0) из стека сопроцессора по адресу (esp) [тут лежит argument * 0.017453]; затем выталкивание st(0).
         pushl   -12(%ebp) // на вершину стека кладется (ebp - 12) [number].
         call    CalcSin // вызов функции CalcSin для number и (argument * 0.017453).
         addl    $16, %esp // esp = esp + 16.
         subl    $4, %esp // esp = esp - 4.
         leal    -8(%esp), %esp // в esp копируется адрес (esp - 8).
-        fstpl   (%esp) // сохранение вершины стека st(0) по адресу (esp) [результат].
+        fstpl   (%esp) // сохранение вершины стека st(0) по адресу (esp) [результат]; затем выталкивание st(0).
         pushl   $.LC6 // на вершину стека кладется строковый литерал, лежащий по метке .LC6.
         call    printf
         addl    $16, %esp // esp = esp + 16.
@@ -144,16 +144,16 @@ main:
         faddp   %st, %st(1) // st(0) = st(0) + st(1), st(0) = 0.000000001 * result_2 + result_1.
         subl    $4, %esp // esp = esp - 4.
         leal    -8(%esp), %esp // в esp копируется адрес (esp - 8).
-        fstpl   (%esp) // сохранение вершины стека st(0) по адресу (esp) [итоговое время работы].
+        fstpl   (%esp) // сохранение вершины стека st(0) по адресу (esp) [итоговое время работы]; затем выталкивание st(0).
         pushl   $.LC8 // на вершину стека помещается строковый литерал, лежащий по метке .LC8.
         call    printf
         addl    $16, %esp // esp = esp + 16.
         movl    $0, %eax // в регистр eax копируется значение 0 (индикатор завершения работы подпрограммы).
 .L9:
         leal    -8(%ebp), %esp // в esp копируется адрес (esp - 8).
-        popl    %ecx // извлечение ecx со стека.
-        popl    %ebx // извлечение ebx со стека.
-        popl    %ebp // извлечение ebp со стека.
+        popl    %ecx // извлечение значения с вершины стека и его запись в регистр ecx.
+        popl    %ebx // извлечение значения с вершины стека и его запись в регистр ebx.
+        popl    %ebp // извлечение значения с вершины стека и его запись в регистр ebp.
         leal    -4(%ecx), %esp // в esp копируется адрес (esp - 4).
         ret // завершение работы подпрограммы.
 .LC5:

@@ -1,44 +1,44 @@
 CalcSin:
-        pushl   %ebx
-        subl    $8, %esp
-        movl    16(%esp), %eax
-        fldl    20(%esp)
-        testl   %eax, %eax
-        jle     .L4
-        fld1
-        leal    1(%eax,%eax), %ebx
-        movl    $1, %edx
-        movl    $1, %eax
-        fldz
+        pushl   %ebx // помещение ebx на вершину стека.
+        subl    $8, %esp // esp = esp - 8 (резервирование места под локальные переменные).
+        movl    16(%esp), %eax // в eax копируется значение, лежащее по адресу (esp + 16) [number].
+        fldl    20(%esp) // загрузка значения, лежащего по адресу (esp + 20) [argument], в st(0).
+        testl   %eax, %eax // логическое "И" для изменения флагов SF, OF и ZF.
+        jle     .L4 // если флаги SF и OF (знака и переполнения) не равны или ZF = 1 (в eax лежит 0), то переход на метку .L4.
+        fld1 // загрузка значения 1 на вершину стека FPU [в st(0)] [nextMultiplier].
+        leal    1(%eax,%eax), %ebx // ebx = 1 + eax + eax = [2 * number + 1] (leal для арифметических операций).
+        movl    $1, %edx // в edx копируется значение 1 [signStatus].
+        movl    $1, %eax // в edx копируется значение 1 [factorial].
+        fldz // загрузка значения 0 на вершину стека FPU [в st(0)] [result].
 .L3:
-        movl    %eax, 4(%esp)
-        fildl   4(%esp)
-        leal    1(%eax), %ecx
-        addl    $2, %eax
-        movl    %edx, 4(%esp)
-        negl    %edx
-        fdivr   %st(3), %st
-        fmulp   %st, %st(2)
-        fildl   4(%esp)
-        movl    %ecx, 4(%esp)
-        fmul    %st(2), %st
-        faddp   %st, %st(1)
-        fildl   4(%esp)
-        fdivr   %st(3), %st
-        fmulp   %st, %st(2)
-        cmpl    %eax, %ebx
-        jne     .L3
-        fstp    %st(1)
-        fstp    %st(1)
-        addl    $8, %esp
-        popl    %ebx
-        ret
+        movl    %eax, 4(%esp) // в значение, лежащее по адресу (esp + 4) копируется eax [factorial].
+        fildl   4(%esp) // помещение [factorial] на вершину стека FPU [в st(0)].
+        leal    1(%eax), %ecx // в ecx копируется адрес (eax + 1).
+        addl    $2, %eax // eax = eax + 2 [factorial += 2].
+        movl    %edx, 4(%esp) // в значение, лежащее по адресу (esp + 4) копируется edx [signStatus].
+        negl    %edx // signStatus *= -1.
+        fdivr   %st(3), %st // реверсивное деление: st(0) = st(3) [argument] / st(0) [factorial].
+        fmulp   %st, %st(2) // st(2) = st(2) [nextMultiplier] * st(0) [новый nextMultiplier]; вытолкнули st(0).
+        fildl   4(%esp) // помещение [signStatus] на вершину стека [в st(0)].
+        movl    %ecx, 4(%esp) // в значение, лежащее по адресу (esp + 4) копируется ecx [factorial].
+        fmul    %st(2), %st // st(0) = st(0) [signStatus] * st(2) [nextMultiplier].
+        faddp   %st, %st(1) // st(1) = st(1) [result] + st(0) [signStatus * nextMultiplier]; вытолкнули st(0).
+        fildl   4(%esp) // помещение [factorial] на вершину стека FPU [в st(0)].
+        fdivr   %st(3), %st // реверсивное деление: st(0) = st(3) [argument] / st(0) [factorial].
+        fmulp   %st, %st(2) // st(2) = st(2) [nextMultiplier] * st(0) [factorial]; вытолкнули st(0).
+        cmpl    %eax, %ebx // сравнение ebx [2 * number + 1] и eax [factorial].
+        jne     .L3 // если они не равны (ZF != 1), то переход на метку .L3.
+        fstp    %st(1) // сохранение st(0) в st(1); выталкивание st(0).
+        fstp    %st(1) // сохранение st(0) в st(1); выталкивание st(0).
+        addl    $8, %esp // esp = esp + 8.
+        popl    %ebx // извлечение значения с вершины стека и его копирование в регистр ebx.
+        ret // возврат из подпрограммы.
 .L4:
-        fstp    %st(0)
-        fldz
-        addl    $8, %esp
-        popl    %ebx
-        ret
+        fstp    %st(0) // сохранение st(0) из стека FPU по адресу
+        fldz // помещение значения 0 на вершину стека FPU [в st(0)].
+        addl    $8, %esp // esp = esp + 8.
+        popl    %ebx // извлечение значения с вершины стека и его запись в регистр ebx.
+        ret // возврат из подпрограммы.
 .LC3:
         .string "too few arguments. try again"
 .LC4:
@@ -72,16 +72,16 @@ main:
         call    strtol
 
         /* strtod */
-        popl    %edx // извлечение edx со стека.
-        popl    %ecx // извлечение ecx со стека.
+        popl    %edx // извлечение значения с вершины стека и его запись в регистр edx.
+        popl    %ecx // извлечение значения с вершины стека и его запись в регистр ecx.
         pushl   $0 // помещение 0 на вершину стека.
         pushl   8(%ebx) // помещение argv[2] на вершину стека.
         movl    %eax, %esi // в esi копируется значение eax [результат strtol].
         call    strtod
-        fstpl   -48(%ebp) // вытолкнули st(0) из стека FPU и положили по адресу (ebp - 48) [argument].
+        fstpl   -48(%ebp) // сохранение st(0) из стека FPU по адресу (ebp - 48) [argument]; затем выталкивание st(0).
 
-        popl    %ebx // извлечение ebx со стека.
-        popl    %eax // извлечение eax со стека.
+        popl    %ebx // извлечение значения с вершины стека и его запись в регистр ebx.
+        popl    %eax // извлечение значения с вершины стека и его запись в регистр eax.
         leal    -40(%ebp), %eax // в eax копируется адрес (ebp - 40) [адрес start_clock].
         pushl   %eax // поместили адрес start_clock на вершину стека.
         pushl   $4 // поместили CLOCK_MONOTONIC_RAW на вершину стека.
@@ -89,38 +89,38 @@ main:
         fldl    -48(%ebp) // поместили argument в st(0).
         fmull   .LC5 // перемножили st(0) [argument] и константу 0.017453.
         movl    %esi, (%esp) // в значение, лежащее по адресу (esp), скопировали esi [number].
-        fstpl   4(%esp) // извлекли st(0) со стека FPU и поместили по адресу (esp + 4) [argument * 0.017453].
+        fstpl   4(%esp) // сохранение st(0) из стека FPU по адресу (esp + 4) [argument * 0.017453]; затем выталкивание st(0).
         call    CalcSin
-        movl    $.LC6, (%esp)
-        fstpl   4(%esp)
+        movl    $.LC6, (%esp) // в значение, лежащее по адресу (esp) скопирован строковый литерал, лежащий по метке .LC6.
+        fstpl   4(%esp) // сохранение st(0) из стека FPU по адресу (esp + 4) [результат CalcSin]; затем выталкивание st(0).
         call    printf
-        popl    %eax
-        leal    -32(%ebp), %eax
-        popl    %edx
-        pushl   %eax
-        pushl   $4
+        popl    %eax // извлечение значения с вершины стека и его запись в регистр eax.
+        leal    -32(%ebp), %eax // // в eax копируется адрес (ebp - 32) [адрес end_clock]
+        popl    %edx // извлечение значения с вершины стека и его запись в регистр edx.
+        pushl   %eax // поместили адрес end_clock на вершину стека.
+        pushl   $4 // поместили CLOCK_MONOTONIC_RAW на вершину стека.
         call    clock_gettime
-        movl    -28(%ebp), %eax
-        subl    -36(%ebp), %eax
-        movl    %eax, -48(%ebp)
-        movl    -32(%ebp), %eax
-        subl    -40(%ebp), %eax
-        fildl   -48(%ebp)
-        movl    %eax, -48(%ebp)
-        fmull   .LC7
-        fildl   -48(%ebp)
-        movl    $.LC8, (%esp)
-        faddp   %st, %st(1)
-        fstpl   4(%esp)
+        movl    -28(%ebp), %eax // в eax копируется значение, лежащее по адресу (ebp - 28) [end_clock.tv_nsec].
+        subl    -36(%ebp), %eax // eax = eax - (ebp - 36) [end_clock.tv_nsec - start_clock.tv_nsec].
+        movl    %eax, -48(%ebp) // в значение, лежащее по адресу (ebp - 48) копируется разность наносекунд.
+        movl    -32(%ebp), %eax // в eax копируется значение, лежащее по адресу (ebp - 28) [end_clock.tv_sec].
+        subl    -40(%ebp), %eax // eax = eax - (ebp - 40) [end_clock.tv_sec - start_clock.tv_sec].
+        fildl   -48(%ebp) // помещение разности наносекунд на вершину стека FPU [в st(0)].
+        movl    %eax, -48(%ebp) // в значение, лежащее по адресу (ebp - 48) копируется разность секунд.
+        fmull   .LC7 // st(0) = st(0) * 0.000000001.
+        fildl   -48(%ebp) // помещение разности секунд на вершину стека FPU [в st(0)].
+        movl    $.LC8, (%esp) // копирование строкового литерала, лежащего по метке .LC8 в значение, лежащее по адресу (esp).
+        faddp   %st, %st(1) // st(0) = st(0) + st(1) [разность секунд + 0.000000001 * разность наносекунд].
+        fstpl   4(%esp) // сохранение st(0) из стека FPU по адресу (esp + 4) [время работы подпрограммы]; затем выталкивание st(0).
         call    printf
-        addl    $16, %esp
+        addl    $16, %esp // esp = esp + 16.
 .L10:
         leal    -12(%ebp), %esp // в esp копируется адрес (ebp - 12).
         xorl    %eax, %eax // обнуление регистра eax.
-        popl    %ecx // извлечение ecx со стека.
-        popl    %ebx // извлечение ebx со стека.
-        popl    %esi // извлечение esi со стека.
-        popl    %ebp // извлечение ebp со стека.
+        popl    %ecx // извлечение значения с вершины стека и его запись в регистр ecx.
+        popl    %ebx // извлечение значения с вершины стека и его запись в регистр ebx.
+        popl    %esi // извлечение значения с вершины стека и его запись в регистр esi.
+        popl    %ebp // извлечение значения с вершины стека и его запись в регистр ebp.
         leal    -4(%ecx), %esp // в esp копируется адрес (ecx - 4).
         ret // завершение работы подпрограммы.
 .L14:
