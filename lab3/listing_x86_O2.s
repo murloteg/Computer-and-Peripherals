@@ -13,19 +13,19 @@ CalcSin:
 .L3:
         movl    %eax, 4(%esp) // в значение, лежащее по адресу (esp + 4) копируется eax [factorial].
         fildl   4(%esp) // помещение [factorial] на вершину стека FPU [в st(0)].
-        leal    1(%eax), %ecx // в ecx копируется адрес (eax + 1).
+        leal    1(%eax), %ecx // в ecx копируется адрес (eax + 1) [может, factorial + 1].
         addl    $2, %eax // eax = eax + 2 [factorial += 2].
         movl    %edx, 4(%esp) // в значение, лежащее по адресу (esp + 4) копируется edx [signStatus].
         negl    %edx // signStatus *= -1.
-        fdivr   %st(3), %st // реверсивное деление: st(0) = st(3) [argument] / st(0) [factorial].
-        fmulp   %st, %st(2) // st(2) = st(2) [nextMultiplier] * st(0) [новый nextMultiplier]; вытолкнули st(0).
+        fdivr   %st(3), %st // реверсивное деление: st(3) = st(3) [argument] / st(0) [factorial].
+        fmulp   %st, %st(2) // st(0) = st(0) [sign] * st(2) [result]; Выталкивание st(0) и st(2) со стека. Сохранение результата в st(0).
         fildl   4(%esp) // помещение [signStatus] на вершину стека [в st(0)].
-        movl    %ecx, 4(%esp) // в значение, лежащее по адресу (esp + 4) копируется ecx [factorial].
-        fmul    %st(2), %st // st(0) = st(0) [signStatus] * st(2) [nextMultiplier].
-        faddp   %st, %st(1) // st(1) = st(1) [result] + st(0) [signStatus * nextMultiplier]; вытолкнули st(0).
-        fildl   4(%esp) // помещение [factorial] на вершину стека FPU [в st(0)].
-        fdivr   %st(3), %st // реверсивное деление: st(0) = st(3) [argument] / st(0) [factorial].
-        fmulp   %st, %st(2) // st(2) = st(2) [nextMultiplier] * st(0) [factorial]; вытолкнули st(0).
+        movl    %ecx, 4(%esp) // в значение, лежащее по адресу (esp + 4) копируется ecx [??].
+        fmul    %st(2), %st // st(2) = st(2) [factorial] * st(0) [signStatus].
+        faddp   %st, %st(1) // st(0) = st(0) [factorial * signStatus] + st(1) [result * signStatus]; Выталкивание st(0) и st(1) со стека. Сохранение результата в st(0).
+        fildl   4(%esp) // помещение [??] на вершину стека FPU [в st(0)].
+        fdivr   %st(3), %st // реверсивное деление: st(3) = st(0) [??] / st(3) [argument / factorial].
+        fmulp   %st, %st(2) // st(0) = st(0) [??] * st(2) [nextMultiplier]; Выталкивание st(0) и st(2) со стека. Сохранение результата в st(0)..
         cmpl    %eax, %ebx // сравнение ebx [2 * number + 1] и eax [factorial].
         jne     .L3 // если они не равны (ZF != 1), то переход на метку .L3.
         fstp    %st(1) // сохранение st(0) в st(1); выталкивание st(0).
@@ -34,7 +34,7 @@ CalcSin:
         popl    %ebx // извлечение значения с вершины стека и его копирование в регистр ebx.
         ret // возврат из подпрограммы.
 .L4:
-        fstp    %st(0) // сохранение st(0) из стека FPU по адресу
+        fstp    %st(0) // удаление значения из вершины FPU стека.
         fldz // помещение значения 0 на вершину стека FPU [в st(0)].
         addl    $8, %esp // esp = esp + 8.
         popl    %ebx // извлечение значения с вершины стека и его запись в регистр ebx.

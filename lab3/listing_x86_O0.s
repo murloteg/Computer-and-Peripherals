@@ -17,21 +17,21 @@ CalcSin:
 .L3:
         fildl   -28(%ebp) // загрузка операнда [factorial] на вершину стека (st(0) = [factorial]).
         fldl    -40(%ebp) // загрузка операнда [argument] на вершину стека (st(0) = [argument]).
-        fdivp   %st, %st(1) // st(0) = st(0) / st(1).
+        fdivp   %st, %st(1) // st(0) = st(0) / st(1). Выталкивание st(0) и st(1) со стека. Сохранение результата в st(0).
         fldl    -24(%ebp) // загрузка операнда [nextMultiplier] на вершину стека (st(0) = [nextMultiplier]).
-        fmulp   %st, %st(1) // st(0) = st(0) * st(1) [nextMultiplier *= (argument / factorial)].
+        fmulp   %st, %st(1) // st(0) = st(0) * st(1) [nextMultiplier *= (argument / factorial)]. Выталкивание st(0) и st(1) со стека. Сохранение результата в st(0).
         fstpl   -24(%ebp) // сохранение вершины стека st(0) по адресу (ebp - 24) [поместили nextMultiplier]; затем выталкивание st(0).
         addl    $1, -28(%ebp) // [factorial += 1].
         fildl   -12(%ebp) // загрузка операнда [signStatus] на вершину стека (st(0) = [signStatus]).
         fmull   -24(%ebp) // st(0) = st(0) * [nextMultiplier].
         fldl    -8(%ebp) // загрузка операнда [result] на вершину стека (st(0) = [result]).
-        faddp   %st, %st(1) // st(0) = st(0) + st(1) (тут лежит signStatus * nextMultiplier).
+        faddp   %st, %st(1) // st(0) = st(0) + st(1) (тут лежит signStatus * nextMultiplier). Выталкивание st(0) и st(1) со стека. Сохранение результата в st(0).
         fstpl   -8(%ebp) // сохранение вершины стека st(0) по адресу (ebp - 8) [тут новое значение result]; затем выталкивание st(0).
         fildl   -28(%ebp) // загрузка операнда [factorial] на вершину стека (st(0) = [factorial]).
         fldl    -40(%ebp) // загрузка операнда [argument] на вершину стека (st(0) = [argument]).
-        fdivp   %st, %st(1) // st(0) = st(0) / st(1).
+        fdivp   %st, %st(1) // st(0) = st(0) / st(1) [argument / factorial]. Выталкивание st(0) и st(1) со стека. Сохранение результата в st(0).
         fldl    -24(%ebp) // загрузка операнда [nextMultiplier] на вершину стека (st(0) = [nextMultiplier]).
-        fmulp   %st, %st(1) // st(0) = st(0) * st(1) [nextMultiplier *= (argument / factorial)].
+        fmulp   %st, %st(1) // st(0) = st(0) * st(1) [nextMultiplier *= (argument / factorial)]. Выталкивание st(0) и st(1) со стека. Сохранение результата в st(0).
         fstpl   -24(%ebp) // сохранение вершины стека st(0) по адресу (ebp - 24) [поместили nextMultiplier]; затем выталкивание st(0).
         addl    $1, -28(%ebp) // [factorial += 1].
         negl    -12(%ebp) // в (ebp - 12) помещается результат (0 - [signStatus]), т.е. signStatus *= (-1).
@@ -111,7 +111,7 @@ main:
         addl    $16, %esp // esp = esp + 16.
         fldl    -24(%ebp) // в st(0) помещается (ebp - 24) (то есть argument).
         fldl    .LC5 // в st(0) помещается константа, лежащая по метке .LC5 (0.017453).
-        fmulp   %st, %st(1) // st(0) = st(0) * st(1).
+        fmulp   %st, %st(1) // st(0) = st(0) * st(1) [argument * 0.017453]. Выталкивание st(0) и st(1) со стека. Сохранение результата в st(0).
         leal    -8(%esp), %esp // в esp копируется адрес (esp - 8).
         fstpl   (%esp) // сохранение st(0) из стека сопроцессора по адресу (esp) [тут лежит argument * 0.017453]; затем выталкивание st(0).
         pushl   -12(%ebp) // на вершину стека кладется (ebp - 12) [number].
