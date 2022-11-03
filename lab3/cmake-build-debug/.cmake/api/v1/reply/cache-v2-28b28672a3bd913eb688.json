@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/mac/Desktop/GitHub/Computer-and-Peripherals/lab3/cmake-build-debug"
+			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab3/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -495,7 +495,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/mac/Desktop/GitHub/Computer-and-Peripherals/lab3"
+			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab3"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -1087,7 +1087,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/mac/Desktop/GitHub/Computer-and-Peripherals/lab3/cmake-build-debug"
+			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab3/cmake-build-debug"
 		},
 		{
 			"name" : "lab3_IS_TOP_LEVEL",
@@ -1111,7 +1111,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/mac/Desktop/GitHub/Computer-and-Peripherals/lab3"
+			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab3"
 		}
 	],
 	"kind" : "cache",

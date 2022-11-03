@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/mac/Desktop/GitHub/Computer-and-Peripherals/lab3/cmake-build-debug",
-		"source" : "/Users/mac/Desktop/GitHub/Computer-and-Peripherals/lab3"
+		"build" : "/Users/mac/CLionProjects/EVM-Projects/lab3/cmake-build-debug",
+		"source" : "/Users/mac/CLionProjects/EVM-Projects/lab3"
 	},
 	"version" : 
 	{

@@ -78,18 +78,8 @@ CMakeFiles/lab3.dir/main.c.o: ../main.c \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/time.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/sys/_types/_clock_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/sys/_types/_time_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/sys/_types/_timespec.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/12.0.5/include/limits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/limits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/machine/limits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/i386/limits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/i386/_limits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/sys/syslimits.h
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/sys/_types/_timespec.h
 
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/sys/syslimits.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/machine/limits.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/sys/_types/_timespec.h:
 
@@ -100,8 +90,6 @@ CMakeFiles/lab3.dir/main.c.o: ../main.c \
 /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/alloca.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/libkern/i386/_OSByteOrder.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/limits.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/libkern/_OSByteOrder.h:
 
@@ -132,8 +120,6 @@ CMakeFiles/lab3.dir/main.c.o: ../main.c \
 /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/mach/i386/_structs.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/mach/machine/_structs.h:
-
-/Library/Developer/CommandLineTools/usr/lib/clang/12.0.5/include/limits.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/i386/_mcontext.h:
 
@@ -209,8 +195,6 @@ CMakeFiles/lab3.dir/main.c.o: ../main.c \
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/sys/_types/_int8_t.h:
 
-/Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/i386/limits.h:
-
 /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/machine/types.h:
 
 ../main.c:
@@ -218,8 +202,6 @@ CMakeFiles/lab3.dir/main.c.o: ../main.c \
 /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/i386/types.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/machine/_types.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/i386/_limits.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/sys/_types/_clock_t.h:
 

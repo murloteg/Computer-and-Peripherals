@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/mac/Desktop/GitHub/Computer-and-Peripherals/lab3/main.c" "CMakeFiles/lab3.dir/main.c.o" "gcc" "CMakeFiles/lab3.dir/main.c.o.d"
+  "/Users/mac/CLionProjects/EVM-Projects/lab3/main.c" "CMakeFiles/lab3.dir/main.c.o" "gcc" "CMakeFiles/lab3.dir/main.c.o.d"
   )
 
 # Targets to which this target links.

@@ -1,5 +1,5 @@
 CMakeFiles/lab3.dir/main.c.o: \
-  /Users/mac/Desktop/GitHub/Computer-and-Peripherals/lab3/main.c \
+  /Users/mac/CLionProjects/EVM-Projects/lab3/main.c \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/_stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/sys/cdefs.h \
