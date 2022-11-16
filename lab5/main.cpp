@@ -2,17 +2,31 @@
 #include "opencv2/opencv.hpp"
 #include <ctime>
 
-enum Consts
+enum RGBConsts
 {
     MIN_RGB_VALUE = 0,
     MAX_RGB_VALUE = 255,
+    COLOR_GROWTH_PARAMETER = 4
+};
+
+enum BlurConsts
+{
     MIN_BLUR_VALUE = 1,
     MAX_BLUR_VALUE = 39,
+    BLUR_GROWTH_PARAMETER = 6
+};
+
+enum ErosionConsts
+{
     MIN_EROSION_VALUE = 1,
     MAX_EROSION_VALUE = 9,
-    COLOR_GROWTH_PARAMETER = 4,
-    BLUR_GROWTH_PARAMETER = 6,
-    EROSION_GROWTH_PARAMETER = 2
+    EROSION_GROWTH_PARAMETER = 2,
+};
+
+enum GeneralConsts
+{
+    NUMBER_OF_MILLISECONDS = 1000,
+    COEFFICIENT = 1000
 };
 
 enum Directions
@@ -119,20 +133,20 @@ int main()
     {
         return -1;
     }
-    myCamera.read(frame);
 
-    long long int numberOfFrames = 0;
-    struct timespec start_clock{}, end_clock{};
-    clock_gettime(CLOCK_MONOTONIC_RAW, &start_clock);
+    myCamera.read(frame);
     int top = static_cast<int> (0.05 * frame.rows);
     int bottom = top;
     int left = static_cast<int> (0.05 * frame.cols);
     int right = left;
     int borderType = BORDER_CONSTANT;
-
     int red = MIN_RGB_VALUE, green = MIN_RGB_VALUE, blue = MIN_RGB_VALUE;
     int erosionSize = MIN_EROSION_VALUE;
     Directions directionOfRGB = TO_MAX_VALUE, directionOfErosion = TO_MAX_VALUE;
+
+    long long int numberOfFrames = 0;
+    struct timespec start_clock{}, end_clock{};
+    clock_gettime(CLOCK_MONOTONIC_RAW, &start_clock);
     while (myCamera.read(frame))
     {
         myCamera >> frame;
@@ -142,7 +156,7 @@ int main()
         Mat element = getStructuringElement(MORPH_CROSS, Size(2 * erosionSize + 1, 2 * erosionSize + 1), Point(2, 2));
         erode(dest, dest, element);
         imshow("My Camera", dest);
-        if (waitKey(1000 / 20) == static_cast<int> ('q'))
+        if (waitKey(NUMBER_OF_MILLISECONDS / COEFFICIENT) == static_cast<int> ('q'))
         {
             break;
         }
