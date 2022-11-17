@@ -1,6 +1,5 @@
 #include <iostream>
 #include "opencv2/opencv.hpp"
-#include <ctime>
 
 enum RGBConsts
 {
@@ -122,9 +121,34 @@ void UpdateBlur(int& weight, int& height, Directions& direction)
     }
 }
 
-void ViewPercents(double percentValue)
+void ViewPercents(std::vector<double>& stats, int& vectorIndex)
 {
-    std::cout << percentValue * 100 << "%" << std::endl;
+    std::cout << stats[vectorIndex] * 100 << "%" << std::endl;
+    ++vectorIndex;
+}
+
+void ViewStats(std::vector<double>& stats, double avgTimeOfIteration, long long int numberOfFrames)
+{
+    avgTimeOfIteration /= static_cast<double> (numberOfFrames);
+    for (double& item : stats)
+    {
+        item /= static_cast<double> (numberOfFrames);
+    }
+
+    for (double& item : stats)
+    {
+        item /= avgTimeOfIteration;
+    }
+
+    int vectorIndex = 0;
+    std::cout << "1) AVERAGE PERCENTAGE OF READ: ";
+    ViewPercents(stats, vectorIndex);
+    std::cout << "2) AVERAGE PERCENTAGE OF TRANSFORMATION: ";
+    ViewPercents(stats, vectorIndex);
+    std::cout << "3) AVERAGE PERCENTAGE OF OUTPUT: ";
+    ViewPercents(stats, vectorIndex);
+    std::cout << "4) AVERAGE PERCENTAGE OF OTHER: ";
+    ViewPercents(stats, vectorIndex);
 }
 
 using namespace cv;
@@ -140,9 +164,9 @@ int main()
     }
 
     myCamera.read(frame);
-    int top = static_cast<int> (0.05 * frame.rows);
+    int top = static_cast<int> (0.08 * frame.rows);
     int bottom = top;
-    int left = static_cast<int> (0.05 * frame.cols);
+    int left = static_cast<int> (0.08 * frame.cols);
     int right = left;
     int borderType = BORDER_CONSTANT;
     int red = MIN_RGB_VALUE, green = MIN_RGB_VALUE, blue = MIN_RGB_VALUE;
@@ -150,39 +174,53 @@ int main()
     Directions directionOfRGB = TO_MAX_VALUE, directionOfErosion = TO_MAX_VALUE;
 
     long long int numberOfFrames = 0;
-    struct timespec start_clock{}, end_clock{};
-    clock_gettime(CLOCK_MONOTONIC_RAW, &start_clock); // TODO: use chrono instead of clockgettime.
+    std::chrono::time_point<std::chrono::high_resolution_clock> startFrameTime;
+    std::chrono::time_point<std::chrono::high_resolution_clock> endFrameTime;
 
-    std::chrono::time_point<std::chrono::high_resolution_clock> previousFrameTime(std::chrono::high_resolution_clock::now());
-    std::chrono::time_point<std::chrono::high_resolution_clock> newFrameTime;
+    std::chrono::time_point<std::chrono::high_resolution_clock> startReadTime;
+    std::chrono::time_point<std::chrono::high_resolution_clock> endReadTime;
 
-    std::chrono::time_point<std::chrono::high_resolution_clock> newReadTime;
-    std::chrono::time_point<std::chrono::high_resolution_clock> newTransformationTime;
-    std::chrono::time_point<std::chrono::high_resolution_clock> newOutputTime;
+    std::chrono::time_point<std::chrono::high_resolution_clock> startTransformationTime;
+    std::chrono::time_point<std::chrono::high_resolution_clock> endTransformationTime;
 
-    double avgPercentOfRead = 0;
-    double avgPercentOfTransformation = 0;
-    double avgPercentOfOutput = 0;
-    while (true)
+    std::chrono::time_point<std::chrono::high_resolution_clock> startOutputTime;
+    std::chrono::time_point<std::chrono::high_resolution_clock> endOutputTime;
+
+    std::chrono::time_point<std::chrono::high_resolution_clock> startOtherTime;
+    std::chrono::time_point<std::chrono::high_resolution_clock> endOtherTime;
+
+    double avgTimeOfRead = 0;
+    double avgTimeOfTransformation = 0;
+    double avgTimeOfOutput = 0;
+    double avgTimeOfOther = 0;
+    double avgTimeOfIteration = 0;
+    std::chrono::time_point<std::chrono::high_resolution_clock> startTotalTime(std::chrono::high_resolution_clock::now());
+    while (!frame.empty())
     {
-        newReadTime = std::chrono::high_resolution_clock::now();
+        startFrameTime = std::chrono::high_resolution_clock::now();
+        startReadTime = std::chrono::high_resolution_clock::now();
         myCamera >> frame;
-        assert(!frame.empty());
-        std::chrono::duration<double> readTime = newReadTime - previousFrameTime;
+        endReadTime = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> readTime = endReadTime - startReadTime;
 
-        newTransformationTime = std::chrono::high_resolution_clock::now();
+        startTransformationTime = std::chrono::high_resolution_clock::now();
         Scalar value(red, green, blue);
         copyMakeBorder(frame, dest, top, bottom, left, right, borderType, value);
         flip(dest, dest, 1);
         Mat element = getStructuringElement(MORPH_CROSS, Size(2 * erosionSize + 1, 2 * erosionSize + 1), Point(2, 2));
         erode(dest, dest, element);
-        std::chrono::duration<double> transformationTime = newTransformationTime - previousFrameTime;
+        UpdateRGB(red, green, blue, directionOfRGB);
+        UpdateErosion(erosionSize, directionOfErosion);
+        endTransformationTime = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> transformationTime = endTransformationTime - startTransformationTime;
 
-        newOutputTime = std::chrono::high_resolution_clock::now();
-        imshow("My Camera", dest);
-        std::chrono::duration<double> outputTime = newOutputTime - previousFrameTime;
+        startOutputTime = std::chrono::high_resolution_clock::now();
+        imshow("The frame after transformation", dest);
+//        imshow("The frame without transformation", frame);
+        endOutputTime = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> outputTime = endOutputTime - startOutputTime;
 
-//        imshow("FPS test", frame);
+        startOtherTime = std::chrono::high_resolution_clock::now();
         if (waitKey(NUMBER_OF_MILLISECONDS / COEFFICIENT) == static_cast<int> ('q'))
         {
             break;
@@ -192,32 +230,27 @@ int main()
         {
             break;
         }
-        UpdateRGB(red, green, blue, directionOfRGB);
-        UpdateErosion(erosionSize, directionOfErosion);
+        endOtherTime = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> otherTime = endOtherTime - startOtherTime;
 
-        newFrameTime = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double> duration = (newFrameTime - previousFrameTime);
-        int FPS = static_cast<int> (1 / duration.count());
-        previousFrameTime = newFrameTime;
+        avgTimeOfRead += readTime.count();
+        avgTimeOfTransformation += transformationTime.count();
+        avgTimeOfOutput += outputTime.count();
+        avgTimeOfOther += otherTime.count();
         ++numberOfFrames;
 
-        avgPercentOfRead += readTime.count() / duration.count();
-        avgPercentOfTransformation += transformationTime.count() / duration.count();
-        avgPercentOfOutput += outputTime.count() / duration.count();
-
+        endFrameTime = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> duration = (endFrameTime - startFrameTime);
+        int FPS = static_cast<int> (1 / duration.count());
+        avgTimeOfIteration += duration.count();
         std::cout << "Frames per second: " << FPS << std::endl;
     }
 
-    clock_gettime(CLOCK_MONOTONIC_RAW, &end_clock);
-    double totalTime = static_cast<double> (end_clock.tv_sec - start_clock.tv_sec) + 0.000000001 * static_cast<double> (end_clock.tv_nsec - start_clock.tv_nsec);
-    std::cout << std::endl << "AVERAGE FPS: " << static_cast<double> (numberOfFrames) / totalTime  << std::endl;
-
-    std::cout << "AVERAGE PERCENT OF READ: ";
-    ViewPercents(avgPercentOfRead / static_cast<double> (numberOfFrames));
-    std::cout << "AVERAGE PERCENT OF TRANSFORMATION: ";
-    ViewPercents(avgPercentOfTransformation / static_cast<double> (numberOfFrames));
-    std::cout << "AVERAGE PERCENT OF OUTPUT: ";
-    ViewPercents(avgPercentOfOutput / static_cast<double> (numberOfFrames));
+    std::chrono::time_point<std::chrono::high_resolution_clock> endTotalTime(std::chrono::high_resolution_clock::now());
+    std::chrono::duration<double> totalTime = (endTotalTime - startTotalTime);
+    std::cout << std::endl << "======[AVERAGE FPS]======: " << static_cast<double> (numberOfFrames) / (totalTime.count()) << std::endl;
+    std::vector<double> stats = {avgTimeOfRead, avgTimeOfTransformation, avgTimeOfOutput, avgTimeOfOther};
+    ViewStats(stats, avgTimeOfIteration, numberOfFrames);
     myCamera.release();
 
     return 0;
