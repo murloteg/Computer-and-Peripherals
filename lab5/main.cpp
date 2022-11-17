@@ -35,7 +35,7 @@ enum Directions
     TO_MAX_VALUE = 1
 };
 
-inline bool IsOverflow(long long int value)
+bool IsOverflow(long long int value)
 {
     return (value == LLONG_MAX);
 }
@@ -94,7 +94,7 @@ void UpdateErosion(int& erosionSize, Directions& direction)
     }
 }
 
-/* FOR: GaussianBlur(dest, dest, Size(weight, height), 0, 0); */
+/* FOR: GaussianBlur(dest, dest, Size(weight, height), 0, 0) */
 void UpdateBlur(int& weight, int& height, Directions& direction)
 {
     if (direction == TO_MAX_VALUE)
@@ -122,6 +122,11 @@ void UpdateBlur(int& weight, int& height, Directions& direction)
     }
 }
 
+void ViewPercents(double percentValue)
+{
+    std::cout << percentValue * 100 << "%" << std::endl;
+}
+
 using namespace cv;
 int main()
 {
@@ -146,16 +151,38 @@ int main()
 
     long long int numberOfFrames = 0;
     struct timespec start_clock{}, end_clock{};
-    clock_gettime(CLOCK_MONOTONIC_RAW, &start_clock);
-    while (myCamera.read(frame))
+    clock_gettime(CLOCK_MONOTONIC_RAW, &start_clock); // TODO: use chrono instead of clockgettime.
+
+    std::chrono::time_point<std::chrono::high_resolution_clock> previousFrameTime(std::chrono::high_resolution_clock::now());
+    std::chrono::time_point<std::chrono::high_resolution_clock> newFrameTime;
+
+    std::chrono::time_point<std::chrono::high_resolution_clock> newReadTime;
+    std::chrono::time_point<std::chrono::high_resolution_clock> newTransformationTime;
+    std::chrono::time_point<std::chrono::high_resolution_clock> newOutputTime;
+
+    double avgPercentOfRead = 0;
+    double avgPercentOfTransformation = 0;
+    double avgPercentOfOutput = 0;
+    while (true)
     {
+        newReadTime = std::chrono::high_resolution_clock::now();
         myCamera >> frame;
+        assert(!frame.empty());
+        std::chrono::duration<double> readTime = newReadTime - previousFrameTime;
+
+        newTransformationTime = std::chrono::high_resolution_clock::now();
         Scalar value(red, green, blue);
         copyMakeBorder(frame, dest, top, bottom, left, right, borderType, value);
         flip(dest, dest, 1);
         Mat element = getStructuringElement(MORPH_CROSS, Size(2 * erosionSize + 1, 2 * erosionSize + 1), Point(2, 2));
         erode(dest, dest, element);
+        std::chrono::duration<double> transformationTime = newTransformationTime - previousFrameTime;
+
+        newOutputTime = std::chrono::high_resolution_clock::now();
         imshow("My Camera", dest);
+        std::chrono::duration<double> outputTime = newOutputTime - previousFrameTime;
+
+//        imshow("FPS test", frame);
         if (waitKey(NUMBER_OF_MILLISECONDS / COEFFICIENT) == static_cast<int> ('q'))
         {
             break;
@@ -167,12 +194,30 @@ int main()
         }
         UpdateRGB(red, green, blue, directionOfRGB);
         UpdateErosion(erosionSize, directionOfErosion);
+
+        newFrameTime = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> duration = (newFrameTime - previousFrameTime);
+        int FPS = static_cast<int> (1 / duration.count());
+        previousFrameTime = newFrameTime;
         ++numberOfFrames;
+
+        avgPercentOfRead += readTime.count() / duration.count();
+        avgPercentOfTransformation += transformationTime.count() / duration.count();
+        avgPercentOfOutput += outputTime.count() / duration.count();
+
+        std::cout << "Frames per second: " << FPS << std::endl;
     }
 
     clock_gettime(CLOCK_MONOTONIC_RAW, &end_clock);
     double totalTime = static_cast<double> (end_clock.tv_sec - start_clock.tv_sec) + 0.000000001 * static_cast<double> (end_clock.tv_nsec - start_clock.tv_nsec);
-    std::cout << "FPS: " << static_cast<double> (numberOfFrames) / totalTime  << std::endl;
+    std::cout << std::endl << "AVERAGE FPS: " << static_cast<double> (numberOfFrames) / totalTime  << std::endl;
+
+    std::cout << "AVERAGE PERCENT OF READ: ";
+    ViewPercents(avgPercentOfRead / static_cast<double> (numberOfFrames));
+    std::cout << "AVERAGE PERCENT OF TRANSFORMATION: ";
+    ViewPercents(avgPercentOfTransformation / static_cast<double> (numberOfFrames));
+    std::cout << "AVERAGE PERCENT OF OUTPUT: ";
+    ViewPercents(avgPercentOfOutput / static_cast<double> (numberOfFrames));
     myCamera.release();
 
     return 0;
