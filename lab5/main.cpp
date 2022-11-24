@@ -24,8 +24,7 @@ enum ErosionConsts
 
 enum GeneralConsts
 {
-    NUMBER_OF_MILLISECONDS = 1000,
-    COEFFICIENT = 1000
+    MIN_DELAY = 1
 };
 
 enum Directions
@@ -213,7 +212,6 @@ int main()
         UpdateErosion(erosionSize, directionOfErosion);
         endTransformationTime = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> transformationTime = endTransformationTime - startTransformationTime;
-
         startOutputTime = std::chrono::high_resolution_clock::now();
         imshow("The frame after transformation", dest);
 //        imshow("The frame without transformation", frame);
@@ -221,7 +219,7 @@ int main()
         std::chrono::duration<double> outputTime = endOutputTime - startOutputTime;
 
         startOtherTime = std::chrono::high_resolution_clock::now();
-        if (waitKey(NUMBER_OF_MILLISECONDS / COEFFICIENT) == static_cast<int> ('q'))
+        if (waitKey(MIN_DELAY) == static_cast<int> ('q'))
         {
             break;
         }
