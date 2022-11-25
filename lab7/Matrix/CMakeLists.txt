@@ -1,0 +1,1 @@
+add_library(matrix_lib STATIC Matrix.cpp Matrix.h)

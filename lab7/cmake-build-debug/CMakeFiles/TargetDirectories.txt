@@ -1,3 +1,6 @@
 /Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug/CMakeFiles/lab7.dir
 /Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug/CMakeFiles/edit_cache.dir
 /Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug/Matrix/CMakeFiles/matrix_lib.dir
+/Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug/Matrix/CMakeFiles/edit_cache.dir
+/Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug/Matrix/CMakeFiles/rebuild_cache.dir

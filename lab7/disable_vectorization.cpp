@@ -1,68 +1,4 @@
-#include <cstdio>
-#include <cstdlib>
-
-void SetIdentityMatrix(int* identityMatrix, long int matrixSize)
-{
-    for (int i = 0; i < matrixSize; ++i)
-    {
-        for (int j = 0; j < matrixSize; ++j)
-        {
-            identityMatrix[i * matrixSize + j] = 0;
-            if (i == j)
-            {
-                identityMatrix[i * matrixSize + j] = 1;
-            }
-        }
-    }
-}
-
-void SetMatrix(int* matrix, long int matrixSize)
-{
-    int number = 1;
-    for (int i = 0; i < matrixSize; ++i)
-    {
-        for (int j = 0; j < matrixSize; ++j)
-        {
-            matrix[i * matrixSize + j] = number % 5;
-            ++number;
-        }
-    }
-}
-
-void Swap(int& first, int& second)
-{
-    int temporary = first;
-    first = second;
-    second = temporary;
-}
-
-void TransposeMatrix(int* matrix, long int matrixSize)
-{
-    for (int i = 0; i < matrixSize; ++i)
-    {
-        for (int j = i; j < matrixSize; ++j)
-        {
-            if (i == j)
-            {
-                continue;
-            }
-            Swap(matrix[i * matrixSize + j], matrix[j * matrixSize + i]);
-        }
-    }
-}
-
-void PrintMatrix(const int* matrix, long int matrixSize)
-{
-    for (int i = 0; i < matrixSize; ++i)
-    {
-        for (int j = 0; j < matrixSize; ++j)
-        {
-            printf("%d ", matrix[i * matrixSize + j]);
-        }
-        printf("\n");
-    }
-    printf("\n");
-}
+#include "Matrix.h"
 
 int main(int argc, char** argv)
 {
@@ -72,19 +8,18 @@ int main(int argc, char** argv)
         return 0;
     }
 
-    long int matrixSize = strtol(argv[1], nullptr, 10);
-    long int numberOfIterations = strtol(argv[2], nullptr, 10);
-    int* identityMatrix = new int [matrixSize * matrixSize];
-    SetIdentityMatrix(identityMatrix, matrixSize);
-    PrintMatrix(identityMatrix, matrixSize);
-    int* generalMatrix = new int [matrixSize * matrixSize];
-    SetMatrix(generalMatrix, matrixSize);
-    PrintMatrix(generalMatrix, matrixSize);
+    int matrixSize = static_cast<int> (strtol(argv[1], nullptr, 10));
+    int numberOfIterations = static_cast<int> (strtol(argv[2], nullptr, 10));
+    Matrix generalMatrix = Matrix(matrixSize);
+    generalMatrix.setMatrix();
+    generalMatrix.printMatrix();
 
-    TransposeMatrix(identityMatrix, matrixSize);
-    PrintMatrix(identityMatrix, matrixSize);
+    Matrix result = FindInverseMatrixAlgorithm(generalMatrix, numberOfIterations);
+    result.printMatrix();
+    Matrix checkMatrix = result * generalMatrix;
+    checkMatrix.printMatrix();
+    checkMatrix.findMatrixNorms();
+    std::cout << "FIRST && SECOND NORMS: " << checkMatrix.getFirstNorm() << " " << checkMatrix.getInfinityNorm() << std::endl;
 
-    delete[] identityMatrix;
-    delete[] generalMatrix;
     return 0;
 }
