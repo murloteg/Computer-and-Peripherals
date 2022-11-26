@@ -93,10 +93,8 @@ void Matrix::findMatrixNorms()
         float currentSumOfLine = 0;
         for (int i = 0; i < matrixSize_; ++i)
         {
-            float coefficientOfColumn = (matrix_[i * matrixSize_ + j] < 0) ? -1 : 1;
-            float coefficientOfLine = (matrix_[j * matrixSize_ + i] < 0) ? -1 : 1;
-            currentSumOfColumn += matrix_[i * matrixSize_ + j] * coefficientOfColumn;
-            currentSumOfLine += matrix_[j * matrixSize_ + i] * coefficientOfLine;
+            currentSumOfColumn += std::abs(matrix_[i * matrixSize_ + j]);
+            currentSumOfLine += std::abs(matrix_[j * matrixSize_ + i]);
         }
         maxSumOfColumn = std::max(maxSumOfColumn, currentSumOfColumn);
         maxSumOfLine = std::max(maxSumOfLine, currentSumOfLine);
@@ -130,7 +128,6 @@ void Matrix::printMatrix() const
     }
     printf("\n");
 }
-
 
 template<typename Type>
 void Matrix::swap(Type &first, Type &second)
@@ -168,12 +165,11 @@ bool Matrix::operator==(const Matrix &other)
 
 Matrix& Matrix::operator=(const Matrix& other)
 {
-    if (*this == other)
+    if (this == &other)
     {
         return *this;
     }
 
-    this->setZeroMatrix();
     for (int i = 0; i < matrixSize_; ++i)
     {
         for (int j = 0; j < matrixSize_; ++j)
@@ -187,31 +183,27 @@ Matrix& Matrix::operator=(const Matrix& other)
 
 Matrix &Matrix::operator-=(const Matrix &other)
 {
-    Matrix result(this->matrixSize_);
-    for (int i = 0; i < result.matrixSize_; ++i)
+    for (int i = 0; i < matrixSize_; ++i)
     {
-        for (int j = 0; j < result.matrixSize_; ++j)
+        for (int j = 0; j < matrixSize_; ++j)
         {
-            result.matrix_[i * matrixSize_ + j] = this->matrix_[i * matrixSize_ + j] - other.matrix_[i * matrixSize_ + j];
+            matrix_[i * matrixSize_ + j] = this->matrix_[i * matrixSize_ + j] - other.matrix_[i * matrixSize_ + j];
         }
     }
 
-    *this = result;
     return *this;
 }
 
 Matrix& Matrix::operator+=(const Matrix& other)
 {
-    Matrix result(this->matrixSize_);
-    for (int i = 0; i < result.matrixSize_; ++i)
+    for (int i = 0; i < matrixSize_; ++i)
     {
-        for (int j = 0; j < result.matrixSize_; ++j)
+        for (int j = 0; j < matrixSize_; ++j)
         {
-            result.matrix_[i * matrixSize_ + j] = this->matrix_[i * matrixSize_ + j] + other.matrix_[i * matrixSize_ + j];
+            matrix_[i * matrixSize_ + j] = this->matrix_[i * matrixSize_ + j] + other.matrix_[i * matrixSize_ + j];
         }
     }
 
-    *this = result;
     return *this;
 }
 
@@ -295,6 +287,7 @@ Matrix FindInverseMatrixAlgorithm(Matrix& generalMatrix, int numberOfIterations)
         result += currentMultiplier;
         currentMultiplier *= matrixOfSeries;
     }
+
     result *= FindTransformedMatrix(generalMatrix);
     return result;
 }
