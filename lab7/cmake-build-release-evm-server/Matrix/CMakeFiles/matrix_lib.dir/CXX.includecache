@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/tmp/tmp.pvCGNGlOyC/Matrix/Matrix.cpp
+Matrix.h
+/tmp/tmp.pvCGNGlOyC/Matrix/Matrix.h
+
+/tmp/tmp.pvCGNGlOyC/Matrix/Matrix.h
+cstdio
+-
+iostream
+-
+chrono
+-
+

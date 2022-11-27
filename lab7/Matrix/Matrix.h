@@ -1,7 +1,7 @@
 #ifndef LAB7_MATRIX_H
 #define LAB7_MATRIX_H
-#include <cstdio>
 #include <iostream>
+#include <chrono>
 
 class Matrix {
 private:
@@ -37,7 +37,7 @@ Matrix operator-(const Matrix& first, const Matrix& second);
 Matrix operator+(const Matrix& first, const Matrix& second);
 Matrix operator*(const Matrix& first, const Matrix& second);
 Matrix FindTransformedMatrix(Matrix& generalMatrix);
-Matrix FindMatrixOfSeries(Matrix& generalMatrix);
+Matrix FindMatrixOfSeries(Matrix& generalMatrix, Matrix& transformedMatrix);
 Matrix FindInverseMatrixAlgorithm(Matrix& generalMatrix, int numberOfIterations);
 
 #endif //LAB7_MATRIX_H

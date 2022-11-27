@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="EVM server (aa23f0fa-75ce-4af0-9809-cb27e6644e68)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/tmp.pvCGNGlOyC" local="$PROJECT_DIR$" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release-evm-server-1" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release-evm" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release-evm-server" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

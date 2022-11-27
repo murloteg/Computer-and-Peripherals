@@ -187,7 +187,7 @@ Matrix &Matrix::operator-=(const Matrix &other)
     {
         for (int j = 0; j < matrixSize_; ++j)
         {
-            matrix_[i * matrixSize_ + j] = this->matrix_[i * matrixSize_ + j] - other.matrix_[i * matrixSize_ + j];
+            matrix_[i * matrixSize_ + j] -= other.matrix_[i * matrixSize_ + j];
         }
     }
 
@@ -200,7 +200,7 @@ Matrix& Matrix::operator+=(const Matrix& other)
     {
         for (int j = 0; j < matrixSize_; ++j)
         {
-            matrix_[i * matrixSize_ + j] = this->matrix_[i * matrixSize_ + j] + other.matrix_[i * matrixSize_ + j];
+            matrix_[i * matrixSize_ + j] += other.matrix_[i * matrixSize_ + j];
         }
     }
 
@@ -210,16 +210,16 @@ Matrix& Matrix::operator+=(const Matrix& other)
 Matrix& Matrix::operator*=(const Matrix& other)
 {
     Matrix result(this->matrixSize_);
-    for (int i = 0; i < result.matrixSize_; ++i)
+    for (int k = 0; k < result.matrixSize_; ++k)
     {
-        for (int j = 0; j < result.matrixSize_; ++j)
+        for (int i = 0; i < result.matrixSize_; ++i)
         {
             float currentSum = 0;
-            for (int k = 0; k < result.matrixSize_; ++k)
+            for (int j = 0; j < result.matrixSize_; ++j)
             {
                 currentSum += this->matrix_[i * matrixSize_ + k] * other.matrix_[k * matrixSize_ + j];
             }
-            result.matrix_[i * matrixSize_ + j] = currentSum;
+            result.matrix_[i * matrixSize_ + k] = currentSum;
         }
     }
     *this = result;
@@ -267,9 +267,8 @@ Matrix FindTransformedMatrix(Matrix& generalMatrix)
     return transformedMatrix;
 }
 
-Matrix FindMatrixOfSeries(Matrix& generalMatrix)
+Matrix FindMatrixOfSeries(Matrix& generalMatrix, Matrix& transformedMatrix)
 {
-    Matrix transformedMatrix = FindTransformedMatrix(generalMatrix);
     Matrix identityMatrix(generalMatrix.getMatrixSize());
     identityMatrix.setIdentityMatrix();
     Matrix matrixOfSeries = identityMatrix - (transformedMatrix * generalMatrix);
@@ -278,7 +277,8 @@ Matrix FindMatrixOfSeries(Matrix& generalMatrix)
 
 Matrix FindInverseMatrixAlgorithm(Matrix& generalMatrix, int numberOfIterations)
 {
-    Matrix matrixOfSeries = FindMatrixOfSeries(generalMatrix);
+    Matrix transformedMatrix = FindTransformedMatrix(generalMatrix);
+    Matrix matrixOfSeries = FindMatrixOfSeries(generalMatrix, transformedMatrix);
     Matrix result(generalMatrix.getMatrixSize());
     Matrix currentMultiplier(generalMatrix.getMatrixSize());
     currentMultiplier.setIdentityMatrix();
@@ -288,6 +288,6 @@ Matrix FindInverseMatrixAlgorithm(Matrix& generalMatrix, int numberOfIterations)
         currentMultiplier *= matrixOfSeries;
     }
 
-    result *= FindTransformedMatrix(generalMatrix);
+    result *= transformedMatrix;
     return result;
 }
