@@ -220,6 +220,51 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Enables cluster BLAS library
+ENABLE_BLACS:BOOL=OFF
+
+//Enables BLAS Fortran95 API
+ENABLE_BLAS95:BOOL=OFF
+
+//Enables cluster DFT library
+ENABLE_CDFT:BOOL=OFF
+
+//Enables cluster PARDISO functionality
+ENABLE_CPARDISO:BOOL=OFF
+
+//Enables LAPACK Fortran95 API
+ENABLE_LAPACK95:BOOL=OFF
+
+//Enables OpenMP Offload functionality
+ENABLE_OMP_OFFLOAD:BOOL=OFF
+
+//Enables cluster LAPACK library
+ENABLE_SCALAPACK:BOOL=OFF
+
+//Choose MKL_ARCH options are: ia32;intel64
+MKL_ARCH:STRING=intel64
+
+//The directory containing a CMake configuration file for MKL.
+MKL_DIR:PATH=/usr/local/lib/cmake/mkl-2022.2.0
+
+//Path to a file.
+MKL_H:PATH=/opt/intel/oneapi/mkl/2022.2.0/include
+
+//Choose MKL_INTERFACE_FULL options are: intel_ilp64;intel_lp64
+MKL_INTERFACE_FULL:STRING=intel_ilp64
+
+//Choose MKL_LINK options are: static;dynamic;sdl
+MKL_LINK:STRING=dynamic
+
+//Choose MKL_MPI options are: intelmpi;openmpi;mpich;mpich2
+MKL_MPI:STRING=intelmpi
+
+//Choose MKL_THREADING options are: sequential;intel_thread;tbb_thread;gnu_thread
+MKL_THREADING:STRING=intel_thread
+
+//Path to a library.
+OMP_LIBRARY:FILEPATH=/opt/intel/oneapi/compiler/latest/linux/compiler/lib/intel64/libiomp5.so
+
 //Path to a program.
 ProcessorCount_cmd_nproc:FILEPATH=/usr/bin/nproc
 
@@ -231,6 +276,15 @@ lab7_BINARY_DIR:STATIC=/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm
 
 //Value Computed by CMake
 lab7_SOURCE_DIR:STATIC=/tmp/tmp.pvCGNGlOyC
+
+//Path to a library.
+mkl_core_file:FILEPATH=/opt/intel/oneapi/mkl/2022.2.0/lib/intel64/libmkl_core.so
+
+//Path to a library.
+mkl_intel_ilp64_file:FILEPATH=/opt/intel/oneapi/mkl/2022.2.0/lib/intel64/libmkl_intel_ilp64.so
+
+//Path to a library.
+mkl_intel_thread_file:FILEPATH=/opt/intel/oneapi/mkl/2022.2.0/lib/intel64/libmkl_intel_thread.so
 
 
 ########################
@@ -388,6 +442,8 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding MKL
+FIND_PACKAGE_MESSAGE_DETAILS_MKL:INTERNAL=[/opt/intel/oneapi/compiler/latest/linux/compiler/lib/intel64/libiomp5.so][/opt/intel/oneapi/compiler/latest/linux/compiler/lib/intel64/libiomp5.so][v()]
 //ADVANCED property for variable: ProcessorCount_cmd_nproc
 ProcessorCount_cmd_nproc-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ProcessorCount_cmd_sysctl

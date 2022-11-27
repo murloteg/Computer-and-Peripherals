@@ -1,10 +1,10 @@
-#include "Matrix.h"
+#include "MatrixDefault/MatrixDEFAULT.h"
 
 int main(int argc, char** argv)
 {
     if (argc != 3)
     {
-        printf("bad number of arguments");
+        std::cout << "bad number of arguments" << std::endl;
         return 0;
     }
 
@@ -17,7 +17,7 @@ int main(int argc, char** argv)
 
     Matrix checkMatrix = result * generalMatrix;
     checkMatrix.findMatrixNorms();
-    std::cout << "FIRST && SECOND NORMS: " << checkMatrix.getFirstNorm() << " " << checkMatrix.getInfinityNorm() << std::endl;
+    std::cout << "The first and the infinity NORMS: " << checkMatrix.getFirstNorm() << " " << checkMatrix.getInfinityNorm() << std::endl;
     std::chrono::time_point<std::chrono::high_resolution_clock> end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> totalTime = end - start;
     std::cout << "total time: " << totalTime.count() <<  " sec." << std::endl;

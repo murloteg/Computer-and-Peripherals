@@ -1,0 +1,1 @@
+add_library(matrix_default_lib STATIC MatrixDEFAULT.h MatrixDEFAULT.cpp)

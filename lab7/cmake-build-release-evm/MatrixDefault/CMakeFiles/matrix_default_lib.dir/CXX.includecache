@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/tmp/tmp.pvCGNGlOyC/MatrixDefault/MatrixDEFAULT.cpp
+MatrixDEFAULT.h
+/tmp/tmp.pvCGNGlOyC/MatrixDefault/MatrixDEFAULT.h
+
+/tmp/tmp.pvCGNGlOyC/MatrixDefault/MatrixDEFAULT.h
+iostream
+-
+chrono
+-
+

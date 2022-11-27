@@ -6,5 +6,5 @@ CXX_FLAGS =  -march=native -O3 -DNDEBUG   -std=gnu++17
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/tmp/tmp.pvCGNGlOyC/Matrix 
+CXX_INCLUDES = -I/tmp/tmp.pvCGNGlOyC/MatrixDefault -isystem /opt/intel/oneapi/mkl/2022.2.0/include 
 

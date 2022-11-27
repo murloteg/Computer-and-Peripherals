@@ -124,44 +124,71 @@ lab7/fast:
 .PHONY : lab7/fast
 
 #=============================================================================
-# Target rules for targets named matrix_lib
+# Target rules for targets named matrix_default_lib
 
 # Build rule for target.
-matrix_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 matrix_lib
-.PHONY : matrix_lib
+matrix_default_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 matrix_default_lib
+.PHONY : matrix_default_lib
 
 # fast build rule for target.
-matrix_lib/fast:
-	$(MAKE) -f Matrix/CMakeFiles/matrix_lib.dir/build.make Matrix/CMakeFiles/matrix_lib.dir/build
-.PHONY : matrix_lib/fast
+matrix_default_lib/fast:
+	$(MAKE) -f MatrixDefault/CMakeFiles/matrix_default_lib.dir/build.make MatrixDefault/CMakeFiles/matrix_default_lib.dir/build
+.PHONY : matrix_default_lib/fast
 
-disable_vectorization.o: disable_vectorization.cpp.o
+BLAS_vectorization.o: BLAS_vectorization.cpp.o
 
-.PHONY : disable_vectorization.o
+.PHONY : BLAS_vectorization.o
 
 # target to build an object file
-disable_vectorization.cpp.o:
-	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/disable_vectorization.cpp.o
-.PHONY : disable_vectorization.cpp.o
+BLAS_vectorization.cpp.o:
+	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/BLAS_vectorization.cpp.o
+.PHONY : BLAS_vectorization.cpp.o
 
-disable_vectorization.i: disable_vectorization.cpp.i
+BLAS_vectorization.i: BLAS_vectorization.cpp.i
 
-.PHONY : disable_vectorization.i
+.PHONY : BLAS_vectorization.i
 
 # target to preprocess a source file
-disable_vectorization.cpp.i:
-	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/disable_vectorization.cpp.i
-.PHONY : disable_vectorization.cpp.i
+BLAS_vectorization.cpp.i:
+	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/BLAS_vectorization.cpp.i
+.PHONY : BLAS_vectorization.cpp.i
 
-disable_vectorization.s: disable_vectorization.cpp.s
+BLAS_vectorization.s: BLAS_vectorization.cpp.s
 
-.PHONY : disable_vectorization.s
+.PHONY : BLAS_vectorization.s
 
 # target to generate assembly for a file
-disable_vectorization.cpp.s:
-	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/disable_vectorization.cpp.s
-.PHONY : disable_vectorization.cpp.s
+BLAS_vectorization.cpp.s:
+	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/BLAS_vectorization.cpp.s
+.PHONY : BLAS_vectorization.cpp.s
+
+MatrixBLAS.o: MatrixBLAS.cpp.o
+
+.PHONY : MatrixBLAS.o
+
+# target to build an object file
+MatrixBLAS.cpp.o:
+	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/MatrixBLAS.cpp.o
+.PHONY : MatrixBLAS.cpp.o
+
+MatrixBLAS.i: MatrixBLAS.cpp.i
+
+.PHONY : MatrixBLAS.i
+
+# target to preprocess a source file
+MatrixBLAS.cpp.i:
+	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/MatrixBLAS.cpp.i
+.PHONY : MatrixBLAS.cpp.i
+
+MatrixBLAS.s: MatrixBLAS.cpp.s
+
+.PHONY : MatrixBLAS.s
+
+# target to generate assembly for a file
+MatrixBLAS.cpp.s:
+	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/MatrixBLAS.cpp.s
+.PHONY : MatrixBLAS.cpp.s
 
 # Help Target
 help:
@@ -172,10 +199,13 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... lab7"
-	@echo "... matrix_lib"
-	@echo "... disable_vectorization.o"
-	@echo "... disable_vectorization.i"
-	@echo "... disable_vectorization.s"
+	@echo "... matrix_default_lib"
+	@echo "... BLAS_vectorization.o"
+	@echo "... BLAS_vectorization.i"
+	@echo "... BLAS_vectorization.s"
+	@echo "... MatrixBLAS.o"
+	@echo "... MatrixBLAS.i"
+	@echo "... MatrixBLAS.s"
 .PHONY : help
 
 

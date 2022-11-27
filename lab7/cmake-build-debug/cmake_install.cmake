@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug/Matrix/cmake_install.cmake")
+  include("/Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug/MatrixDefault/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

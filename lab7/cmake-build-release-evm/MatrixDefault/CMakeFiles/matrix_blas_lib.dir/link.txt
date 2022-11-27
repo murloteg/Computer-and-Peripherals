@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmatrix_blas_lib.a  CMakeFiles/matrix_blas_lib.dir/MatrixDEFAULT.cpp.o
+/usr/bin/ranlib libmatrix_blas_lib.a

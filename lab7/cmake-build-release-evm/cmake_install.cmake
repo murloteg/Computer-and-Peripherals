@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm/Matrix/cmake_install.cmake")
+  include("/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm/MatrixDefault/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

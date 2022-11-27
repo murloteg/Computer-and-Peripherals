@@ -6,13 +6,31 @@
 
 #IncludeRegexTransform: 
 
-../Matrix/Matrix.h
+/opt/intel/oneapi/mkl/2022.2.0/include/mkl_cblas.h
+stddef.h
+-
+mkl_types.h
+/opt/intel/oneapi/mkl/2022.2.0/include/mkl_types.h
+mkl_cblas_64.h
+/opt/intel/oneapi/mkl/2022.2.0/include/mkl_cblas_64.h
+
+/opt/intel/oneapi/mkl/2022.2.0/include/mkl_cblas_64.h
+stddef.h
+-
+mkl_types.h
+/opt/intel/oneapi/mkl/2022.2.0/include/mkl_types.h
+
+/opt/intel/oneapi/mkl/2022.2.0/include/mkl_types.h
+
+/tmp/tmp.pvCGNGlOyC/BLAS_vectorization.cpp
+MatrixBLAS.h
+/tmp/tmp.pvCGNGlOyC/MatrixBLAS.h
+
+/tmp/tmp.pvCGNGlOyC/MatrixBLAS.h
 iostream
 -
 chrono
 -
-
-/tmp/tmp.pvCGNGlOyC/disable_vectorization.cpp
-Matrix.h
-/tmp/tmp.pvCGNGlOyC/Matrix.h
+mkl_cblas.h
+/tmp/tmp.pvCGNGlOyC/mkl_cblas.h
 
