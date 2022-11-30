@@ -1,1 +1,0 @@
-/usr/bin/c++   -march=native -O3 -DNDEBUG   CMakeFiles/lab7.dir/disable_vectorization.cpp.o  -o lab7  Matrix/libmatrix_lib.a 

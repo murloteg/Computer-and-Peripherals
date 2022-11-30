@@ -80,8 +80,8 @@ Matrix Matrix::transposeMatrix()
 
 void Matrix::findMatrixNorms()
 {
-    float maxSumOfColumn = 0;
-    float maxSumOfLine = 0;
+    float maxSumOfColumn = std::numeric_limits<float>::min();;
+    float maxSumOfLine = std::numeric_limits<float>::min();;
     for (int j = 0; j < matrixSize_; ++j)
     {
         float currentSumOfColumn = 0;

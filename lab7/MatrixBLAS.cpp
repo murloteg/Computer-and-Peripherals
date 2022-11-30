@@ -36,17 +36,12 @@ void Matrix::setZeroMatrix()
 void Matrix::setMatrix() 
 {
     int number = 1;
-    float minus = -1;
     for (int i = 0; i < matrixSize_; ++i)
     {
         for (int j = 0; j < matrixSize_; ++j)
         {
-            matrix_[i * matrixSize_ + j] = static_cast<float> (number % 5) * minus;
+            matrix_[i * matrixSize_ + j] = static_cast<float> (number % 5);
             ++number;
-            if (j % 19 == 0)
-            {
-                minus *= -1;
-            }
         }
     }
 }
@@ -85,8 +80,8 @@ Matrix Matrix::transposeMatrix()
 
 void Matrix::findMatrixNorms()
 {
-    float maxSumOfColumn = 0;
-    float maxSumOfLine = 0;
+    float maxSumOfColumn = std::numeric_limits<float>::min();
+    float maxSumOfLine = std::numeric_limits<float>::min();
     for (int j = 0; j < matrixSize_; ++j)
     {
         float currentSumOfColumn = 0;

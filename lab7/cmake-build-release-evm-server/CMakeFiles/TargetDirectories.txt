@@ -1,6 +1,0 @@
-/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm-server/CMakeFiles/rebuild_cache.dir
-/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm-server/CMakeFiles/edit_cache.dir
-/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm-server/CMakeFiles/lab7.dir
-/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm-server/Matrix/CMakeFiles/rebuild_cache.dir
-/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm-server/Matrix/CMakeFiles/edit_cache.dir
-/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm-server/Matrix/CMakeFiles/matrix_lib.dir

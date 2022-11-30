@@ -4,8 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/tmp/tmp.pvCGNGlOyC/BLAS_vectorization.cpp" "/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm/CMakeFiles/lab7.dir/BLAS_vectorization.cpp.o"
-  "/tmp/tmp.pvCGNGlOyC/MatrixBLAS.cpp" "/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm/CMakeFiles/lab7.dir/MatrixBLAS.cpp.o"
+  "/tmp/tmp.pvCGNGlOyC/SSE2_vectorization.cpp" "/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm/CMakeFiles/lab7.dir/SSE2_vectorization.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

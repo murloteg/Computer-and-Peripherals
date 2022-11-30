@@ -130,20 +130,14 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/tmp/tmp.pvCGNGlOyC/BLAS_vectorization.cpp">
-			<Option target="lab7"/>
-		</Unit>
-		<Unit filename="/tmp/tmp.pvCGNGlOyC/MatrixBLAS.cpp">
-			<Option target="lab7"/>
-		</Unit>
-		<Unit filename="/tmp/tmp.pvCGNGlOyC/MatrixBLAS.h">
-			<Option target="lab7"/>
-		</Unit>
 		<Unit filename="/tmp/tmp.pvCGNGlOyC/MatrixDefault/MatrixDEFAULT.cpp">
 			<Option target="matrix_default_lib"/>
 		</Unit>
 		<Unit filename="/tmp/tmp.pvCGNGlOyC/MatrixDefault/MatrixDEFAULT.h">
 			<Option target="matrix_default_lib"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.pvCGNGlOyC/SSE2_vectorization.cpp">
+			<Option target="lab7"/>
 		</Unit>
 		<Unit filename="/tmp/tmp.pvCGNGlOyC/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

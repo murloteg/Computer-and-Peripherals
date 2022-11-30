@@ -94,12 +94,12 @@ MatrixDefault/clean: MatrixDefault/CMakeFiles/matrix_default_lib.dir/clean
 CMakeFiles/lab7.dir/all: MatrixDefault/CMakeFiles/matrix_default_lib.dir/all
 	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/depend
 	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm/CMakeFiles --progress-num=1,2,3 "Built target lab7"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm/CMakeFiles --progress-num=1,2 "Built target lab7"
 .PHONY : CMakeFiles/lab7.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/lab7.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.pvCGNGlOyC/cmake-build-release-evm/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.pvCGNGlOyC/cmake-build-release-evm/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/lab7.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.pvCGNGlOyC/cmake-build-release-evm/CMakeFiles 0
 .PHONY : CMakeFiles/lab7.dir/rule
@@ -121,7 +121,7 @@ CMakeFiles/lab7.dir/clean:
 MatrixDefault/CMakeFiles/matrix_default_lib.dir/all:
 	$(MAKE) -f MatrixDefault/CMakeFiles/matrix_default_lib.dir/build.make MatrixDefault/CMakeFiles/matrix_default_lib.dir/depend
 	$(MAKE) -f MatrixDefault/CMakeFiles/matrix_default_lib.dir/build.make MatrixDefault/CMakeFiles/matrix_default_lib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm/CMakeFiles --progress-num=4,5 "Built target matrix_default_lib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm/CMakeFiles --progress-num=3,4 "Built target matrix_default_lib"
 .PHONY : MatrixDefault/CMakeFiles/matrix_default_lib.dir/all
 
 # Build rule for subdir invocation for target.

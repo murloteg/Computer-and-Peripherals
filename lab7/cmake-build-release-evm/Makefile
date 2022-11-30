@@ -136,59 +136,32 @@ matrix_default_lib/fast:
 	$(MAKE) -f MatrixDefault/CMakeFiles/matrix_default_lib.dir/build.make MatrixDefault/CMakeFiles/matrix_default_lib.dir/build
 .PHONY : matrix_default_lib/fast
 
-BLAS_vectorization.o: BLAS_vectorization.cpp.o
+SSE2_vectorization.o: SSE2_vectorization.cpp.o
 
-.PHONY : BLAS_vectorization.o
-
-# target to build an object file
-BLAS_vectorization.cpp.o:
-	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/BLAS_vectorization.cpp.o
-.PHONY : BLAS_vectorization.cpp.o
-
-BLAS_vectorization.i: BLAS_vectorization.cpp.i
-
-.PHONY : BLAS_vectorization.i
-
-# target to preprocess a source file
-BLAS_vectorization.cpp.i:
-	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/BLAS_vectorization.cpp.i
-.PHONY : BLAS_vectorization.cpp.i
-
-BLAS_vectorization.s: BLAS_vectorization.cpp.s
-
-.PHONY : BLAS_vectorization.s
-
-# target to generate assembly for a file
-BLAS_vectorization.cpp.s:
-	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/BLAS_vectorization.cpp.s
-.PHONY : BLAS_vectorization.cpp.s
-
-MatrixBLAS.o: MatrixBLAS.cpp.o
-
-.PHONY : MatrixBLAS.o
+.PHONY : SSE2_vectorization.o
 
 # target to build an object file
-MatrixBLAS.cpp.o:
-	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/MatrixBLAS.cpp.o
-.PHONY : MatrixBLAS.cpp.o
+SSE2_vectorization.cpp.o:
+	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/SSE2_vectorization.cpp.o
+.PHONY : SSE2_vectorization.cpp.o
 
-MatrixBLAS.i: MatrixBLAS.cpp.i
+SSE2_vectorization.i: SSE2_vectorization.cpp.i
 
-.PHONY : MatrixBLAS.i
+.PHONY : SSE2_vectorization.i
 
 # target to preprocess a source file
-MatrixBLAS.cpp.i:
-	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/MatrixBLAS.cpp.i
-.PHONY : MatrixBLAS.cpp.i
+SSE2_vectorization.cpp.i:
+	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/SSE2_vectorization.cpp.i
+.PHONY : SSE2_vectorization.cpp.i
 
-MatrixBLAS.s: MatrixBLAS.cpp.s
+SSE2_vectorization.s: SSE2_vectorization.cpp.s
 
-.PHONY : MatrixBLAS.s
+.PHONY : SSE2_vectorization.s
 
 # target to generate assembly for a file
-MatrixBLAS.cpp.s:
-	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/MatrixBLAS.cpp.s
-.PHONY : MatrixBLAS.cpp.s
+SSE2_vectorization.cpp.s:
+	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/SSE2_vectorization.cpp.s
+.PHONY : SSE2_vectorization.cpp.s
 
 # Help Target
 help:
@@ -200,12 +173,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... lab7"
 	@echo "... matrix_default_lib"
-	@echo "... BLAS_vectorization.o"
-	@echo "... BLAS_vectorization.i"
-	@echo "... BLAS_vectorization.s"
-	@echo "... MatrixBLAS.o"
-	@echo "... MatrixBLAS.i"
-	@echo "... MatrixBLAS.s"
+	@echo "... SSE2_vectorization.o"
+	@echo "... SSE2_vectorization.i"
+	@echo "... SSE2_vectorization.s"
 .PHONY : help
 
 

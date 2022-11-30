@@ -5,8 +5,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
 set(CMAKE_CXX_STANDARD 17)
 
 #add_executable(lab7 disable_vectorization.cpp)
-#add_executable(lab7 AVX_vectorization.cpp)
-add_executable(lab7 BLAS_vectorization.cpp MatrixBLAS.cpp)
+add_executable(lab7 SSE2_vectorization.cpp)
+#add_executable(lab7 BLAS_vectorization.cpp MatrixBLAS.cpp)
 
 find_package(MKL CONFIG)
 if (${MKL_FOUND})

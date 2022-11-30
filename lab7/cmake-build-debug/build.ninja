@@ -46,15 +46,8 @@ cmake_ninja_workdir = /Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-deb
 
 build cmake_object_order_depends_target_lab7: phony || cmake_object_order_depends_target_matrix_default_lib
 
-build CMakeFiles/lab7.dir/BLAS_vectorization.cpp.o: CXX_COMPILER__lab7_Debug /Users/mac/CLionProjects/EVM-Projects/lab7/BLAS_vectorization.cpp || cmake_object_order_depends_target_lab7
-  DEP_FILE = CMakeFiles/lab7.dir/BLAS_vectorization.cpp.o.d
-  FLAGS = -march=native -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -std=gnu++17
-  INCLUDES = -I/Users/mac/CLionProjects/EVM-Projects/lab7/MatrixDefault
-  OBJECT_DIR = CMakeFiles/lab7.dir
-  OBJECT_FILE_DIR = CMakeFiles/lab7.dir
-
-build CMakeFiles/lab7.dir/MatrixBLAS.cpp.o: CXX_COMPILER__lab7_Debug /Users/mac/CLionProjects/EVM-Projects/lab7/MatrixBLAS.cpp || cmake_object_order_depends_target_lab7
-  DEP_FILE = CMakeFiles/lab7.dir/MatrixBLAS.cpp.o.d
+build CMakeFiles/lab7.dir/SSE2_vectorization.cpp.o: CXX_COMPILER__lab7_Debug /Users/mac/CLionProjects/EVM-Projects/lab7/SSE2_vectorization.cpp || cmake_object_order_depends_target_lab7
+  DEP_FILE = CMakeFiles/lab7.dir/SSE2_vectorization.cpp.o.d
   FLAGS = -march=native -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -std=gnu++17
   INCLUDES = -I/Users/mac/CLionProjects/EVM-Projects/lab7/MatrixDefault
   OBJECT_DIR = CMakeFiles/lab7.dir
@@ -68,7 +61,7 @@ build CMakeFiles/lab7.dir/MatrixBLAS.cpp.o: CXX_COMPILER__lab7_Debug /Users/mac/
 #############################################
 # Link the executable lab7
 
-build lab7: CXX_EXECUTABLE_LINKER__lab7_Debug CMakeFiles/lab7.dir/BLAS_vectorization.cpp.o CMakeFiles/lab7.dir/MatrixBLAS.cpp.o | MatrixDefault/libmatrix_default_lib.a || MatrixDefault/libmatrix_default_lib.a
+build lab7: CXX_EXECUTABLE_LINKER__lab7_Debug CMakeFiles/lab7.dir/SSE2_vectorization.cpp.o | MatrixDefault/libmatrix_default_lib.a || MatrixDefault/libmatrix_default_lib.a
   FLAGS = -march=native -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk
   LINK_LIBRARIES = MatrixDefault/libmatrix_default_lib.a
   OBJECT_DIR = CMakeFiles/lab7.dir
