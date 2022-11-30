@@ -6,11 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/tmp/tmp.pvCGNGlOyC/SSE2_vectorization.cpp
+/tmp/tmp.pvCGNGlOyC/MatrixDefault/MatrixDEFAULT.h
 iostream
 -
 chrono
 -
-xmmintrin.h
+valarray
 -
+
+/tmp/tmp.pvCGNGlOyC/disable_vectorization.cpp
+MatrixDefault/MatrixDEFAULT.h
+/tmp/tmp.pvCGNGlOyC/MatrixDefault/MatrixDEFAULT.h
 

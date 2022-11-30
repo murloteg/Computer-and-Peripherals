@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug"
+			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7_default/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -515,7 +515,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7"
+			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7_default"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -795,7 +795,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "lab7"
+			"value" : "lab7_default"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1099,7 +1099,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug"
+			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7_default/cmake-build-debug"
 		},
 		{
 			"name" : "lab7_IS_TOP_LEVEL",
@@ -1123,7 +1123,43 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7"
+			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7_default"
+		},
+		{
+			"name" : "lab7_default_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7_default/cmake-build-debug"
+		},
+		{
+			"name" : "lab7_default_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "lab7_default_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7_default"
 		}
 	],
 	"kind" : "cache",

@@ -47,7 +47,7 @@
 						0,
 						1
 					],
-					"name" : "lab7",
+					"name" : "lab7_default",
 					"targetIndexes" : 
 					[
 						0,
@@ -59,9 +59,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "lab7::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-lab7-Debug-84d5c922df145f18d7b4.json",
-					"name" : "lab7",
+					"id" : "lab7_default::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lab7_default-Debug-677da75d18e708cbecb9.json",
+					"name" : "lab7_default",
 					"projectIndex" : 0
 				},
 				{
@@ -77,8 +77,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug",
-		"source" : "/Users/mac/CLionProjects/EVM-Projects/lab7"
+		"build" : "/Users/mac/CLionProjects/EVM-Projects/lab7_default/cmake-build-debug",
+		"source" : "/Users/mac/CLionProjects/EVM-Projects/lab7_default"
 	},
 	"version" : 
 	{

@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/lab7.dir/SSE2_vectorization.cpp.o"
+  "CMakeFiles/lab7.dir/disable_vectorization.cpp.o"
   "lab7"
   "lab7.pdb"
 )

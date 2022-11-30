@@ -8,7 +8,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: lab7
+# Project: lab7_default
 # Configurations: Debug
 # =============================================================================
 
@@ -36,46 +36,46 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug/
+cmake_ninja_workdir = /Users/mac/CLionProjects/EVM-Projects/lab7_default/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target lab7
+# Object build statements for EXECUTABLE target lab7_default
 
 
 #############################################
-# Order-only phony target for lab7
+# Order-only phony target for lab7_default
 
-build cmake_object_order_depends_target_lab7: phony || cmake_object_order_depends_target_matrix_default_lib
+build cmake_object_order_depends_target_lab7_default: phony || cmake_object_order_depends_target_matrix_default_lib
 
-build CMakeFiles/lab7.dir/SSE2_vectorization.cpp.o: CXX_COMPILER__lab7_Debug /Users/mac/CLionProjects/EVM-Projects/lab7/SSE2_vectorization.cpp || cmake_object_order_depends_target_lab7
-  DEP_FILE = CMakeFiles/lab7.dir/SSE2_vectorization.cpp.o.d
+build CMakeFiles/lab7_default.dir/disable_vectorization.cpp.o: CXX_COMPILER__lab7_default_Debug /Users/mac/CLionProjects/EVM-Projects/lab7_default/disable_vectorization.cpp || cmake_object_order_depends_target_lab7_default
+  DEP_FILE = CMakeFiles/lab7_default.dir/disable_vectorization.cpp.o.d
   FLAGS = -march=native -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -std=gnu++17
-  INCLUDES = -I/Users/mac/CLionProjects/EVM-Projects/lab7/MatrixDefault
-  OBJECT_DIR = CMakeFiles/lab7.dir
-  OBJECT_FILE_DIR = CMakeFiles/lab7.dir
+  INCLUDES = -I/Users/mac/CLionProjects/EVM-Projects/lab7_default/MatrixDefault
+  OBJECT_DIR = CMakeFiles/lab7_default.dir
+  OBJECT_FILE_DIR = CMakeFiles/lab7_default.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target lab7
+# Link build statements for EXECUTABLE target lab7_default
 
 
 #############################################
-# Link the executable lab7
+# Link the executable lab7_default
 
-build lab7: CXX_EXECUTABLE_LINKER__lab7_Debug CMakeFiles/lab7.dir/SSE2_vectorization.cpp.o | MatrixDefault/libmatrix_default_lib.a || MatrixDefault/libmatrix_default_lib.a
+build lab7_default: CXX_EXECUTABLE_LINKER__lab7_default_Debug CMakeFiles/lab7_default.dir/disable_vectorization.cpp.o | MatrixDefault/libmatrix_default_lib.a || MatrixDefault/libmatrix_default_lib.a
   FLAGS = -march=native -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk
   LINK_LIBRARIES = MatrixDefault/libmatrix_default_lib.a
-  OBJECT_DIR = CMakeFiles/lab7.dir
+  OBJECT_DIR = CMakeFiles/lab7_default.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = lab7
-  TARGET_PDB = lab7.dbg
+  TARGET_FILE = lab7_default
+  TARGET_PDB = lab7_default.dbg
 
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /Users/mac/CLionProjects/EVM-Projects/lab7_default/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -86,7 +86,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/mac/CLionProjects/EVM-Projects/lab7 -B/Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug
+  COMMAND = cd /Users/mac/CLionProjects/EVM-Projects/lab7_default/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/mac/CLionProjects/EVM-Projects/lab7_default -B/Users/mac/CLionProjects/EVM-Projects/lab7_default/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -95,7 +95,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# /Users/mac/CLionProjects/EVM-Projects/lab7/CMakeLists.txt
+# /Users/mac/CLionProjects/EVM-Projects/lab7_default/CMakeLists.txt
 # =============================================================================
 
 # =============================================================================
@@ -107,7 +107,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 build cmake_object_order_depends_target_matrix_default_lib: phony || MatrixDefault/CMakeFiles/matrix_default_lib.dir
 
-build MatrixDefault/CMakeFiles/matrix_default_lib.dir/MatrixDEFAULT.cpp.o: CXX_COMPILER__matrix_default_lib_Debug /Users/mac/CLionProjects/EVM-Projects/lab7/MatrixDefault/MatrixDEFAULT.cpp || cmake_object_order_depends_target_matrix_default_lib
+build MatrixDefault/CMakeFiles/matrix_default_lib.dir/MatrixDEFAULT.cpp.o: CXX_COMPILER__matrix_default_lib_Debug /Users/mac/CLionProjects/EVM-Projects/lab7_default/MatrixDefault/MatrixDEFAULT.cpp || cmake_object_order_depends_target_matrix_default_lib
   DEP_FILE = MatrixDefault/CMakeFiles/matrix_default_lib.dir/MatrixDEFAULT.cpp.o.d
   FLAGS = -march=native -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -std=gnu++17
   OBJECT_DIR = MatrixDefault/CMakeFiles/matrix_default_lib.dir
@@ -135,7 +135,7 @@ build MatrixDefault/libmatrix_default_lib.a: CXX_STATIC_LIBRARY_LINKER__matrix_d
 # Utility command for edit_cache
 
 build MatrixDefault/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug/MatrixDefault && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /Users/mac/CLionProjects/EVM-Projects/lab7_default/cmake-build-debug/MatrixDefault && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -146,7 +146,7 @@ build MatrixDefault/edit_cache: phony MatrixDefault/CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build MatrixDefault/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug/MatrixDefault && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/mac/CLionProjects/EVM-Projects/lab7 -B/Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug
+  COMMAND = cd /Users/mac/CLionProjects/EVM-Projects/lab7_default/cmake-build-debug/MatrixDefault && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/mac/CLionProjects/EVM-Projects/lab7_default -B/Users/mac/CLionProjects/EVM-Projects/lab7_default/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -166,14 +166,14 @@ build matrix_default_lib: phony MatrixDefault/libmatrix_default_lib.a
 # =============================================================================
 
 #############################################
-# Folder: /Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug
+# Folder: /Users/mac/CLionProjects/EVM-Projects/lab7_default/cmake-build-debug
 
-build all: phony lab7 MatrixDefault/all
+build all: phony lab7_default MatrixDefault/all
 
 # =============================================================================
 
 #############################################
-# Folder: /Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug/MatrixDefault
+# Folder: /Users/mac/CLionProjects/EVM-Projects/lab7_default/cmake-build-debug/MatrixDefault
 
 build MatrixDefault/all: phony MatrixDefault/libmatrix_default_lib.a
 

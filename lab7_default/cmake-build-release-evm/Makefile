@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named lab7
+# Target rules for targets named lab7_default
 
 # Build rule for target.
-lab7: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 lab7
-.PHONY : lab7
+lab7_default: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 lab7_default
+.PHONY : lab7_default
 
 # fast build rule for target.
-lab7/fast:
-	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/build
-.PHONY : lab7/fast
+lab7_default/fast:
+	$(MAKE) -f CMakeFiles/lab7_default.dir/build.make CMakeFiles/lab7_default.dir/build
+.PHONY : lab7_default/fast
 
 #=============================================================================
 # Target rules for targets named matrix_default_lib
@@ -136,32 +136,32 @@ matrix_default_lib/fast:
 	$(MAKE) -f MatrixDefault/CMakeFiles/matrix_default_lib.dir/build.make MatrixDefault/CMakeFiles/matrix_default_lib.dir/build
 .PHONY : matrix_default_lib/fast
 
-SSE2_vectorization.o: SSE2_vectorization.cpp.o
+disable_vectorization.o: disable_vectorization.cpp.o
 
-.PHONY : SSE2_vectorization.o
+.PHONY : disable_vectorization.o
 
 # target to build an object file
-SSE2_vectorization.cpp.o:
-	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/SSE2_vectorization.cpp.o
-.PHONY : SSE2_vectorization.cpp.o
+disable_vectorization.cpp.o:
+	$(MAKE) -f CMakeFiles/lab7_default.dir/build.make CMakeFiles/lab7_default.dir/disable_vectorization.cpp.o
+.PHONY : disable_vectorization.cpp.o
 
-SSE2_vectorization.i: SSE2_vectorization.cpp.i
+disable_vectorization.i: disable_vectorization.cpp.i
 
-.PHONY : SSE2_vectorization.i
+.PHONY : disable_vectorization.i
 
 # target to preprocess a source file
-SSE2_vectorization.cpp.i:
-	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/SSE2_vectorization.cpp.i
-.PHONY : SSE2_vectorization.cpp.i
+disable_vectorization.cpp.i:
+	$(MAKE) -f CMakeFiles/lab7_default.dir/build.make CMakeFiles/lab7_default.dir/disable_vectorization.cpp.i
+.PHONY : disable_vectorization.cpp.i
 
-SSE2_vectorization.s: SSE2_vectorization.cpp.s
+disable_vectorization.s: disable_vectorization.cpp.s
 
-.PHONY : SSE2_vectorization.s
+.PHONY : disable_vectorization.s
 
 # target to generate assembly for a file
-SSE2_vectorization.cpp.s:
-	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/SSE2_vectorization.cpp.s
-.PHONY : SSE2_vectorization.cpp.s
+disable_vectorization.cpp.s:
+	$(MAKE) -f CMakeFiles/lab7_default.dir/build.make CMakeFiles/lab7_default.dir/disable_vectorization.cpp.s
+.PHONY : disable_vectorization.cpp.s
 
 # Help Target
 help:
@@ -171,11 +171,11 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... lab7"
+	@echo "... lab7_default"
 	@echo "... matrix_default_lib"
-	@echo "... SSE2_vectorization.o"
-	@echo "... SSE2_vectorization.i"
-	@echo "... SSE2_vectorization.s"
+	@echo "... disable_vectorization.o"
+	@echo "... disable_vectorization.i"
+	@echo "... disable_vectorization.s"
 .PHONY : help
 
 

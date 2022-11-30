@@ -53,7 +53,7 @@ CMAKE_BINARY_DIR = /tmp/tmp.pvCGNGlOyC/cmake-build-release-evm
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/lab7.dir/all
+all: CMakeFiles/lab7_default.dir/all
 all: MatrixDefault/all
 
 .PHONY : all
@@ -64,7 +64,7 @@ preinstall: MatrixDefault/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/lab7.dir/clean
+clean: CMakeFiles/lab7_default.dir/clean
 clean: MatrixDefault/clean
 
 .PHONY : clean
@@ -88,31 +88,31 @@ MatrixDefault/clean: MatrixDefault/CMakeFiles/matrix_default_lib.dir/clean
 .PHONY : MatrixDefault/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/lab7.dir
+# Target rules for target CMakeFiles/lab7_default.dir
 
 # All Build rule for target.
-CMakeFiles/lab7.dir/all: MatrixDefault/CMakeFiles/matrix_default_lib.dir/all
-	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/depend
-	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm/CMakeFiles --progress-num=1,2 "Built target lab7"
-.PHONY : CMakeFiles/lab7.dir/all
+CMakeFiles/lab7_default.dir/all: MatrixDefault/CMakeFiles/matrix_default_lib.dir/all
+	$(MAKE) -f CMakeFiles/lab7_default.dir/build.make CMakeFiles/lab7_default.dir/depend
+	$(MAKE) -f CMakeFiles/lab7_default.dir/build.make CMakeFiles/lab7_default.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm/CMakeFiles --progress-num=1,2 "Built target lab7_default"
+.PHONY : CMakeFiles/lab7_default.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/lab7.dir/rule: cmake_check_build_system
+CMakeFiles/lab7_default.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.pvCGNGlOyC/cmake-build-release-evm/CMakeFiles 4
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/lab7.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/lab7_default.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.pvCGNGlOyC/cmake-build-release-evm/CMakeFiles 0
-.PHONY : CMakeFiles/lab7.dir/rule
+.PHONY : CMakeFiles/lab7_default.dir/rule
 
 # Convenience name for target.
-lab7: CMakeFiles/lab7.dir/rule
+lab7_default: CMakeFiles/lab7_default.dir/rule
 
-.PHONY : lab7
+.PHONY : lab7_default
 
 # clean rule for target.
-CMakeFiles/lab7.dir/clean:
-	$(MAKE) -f CMakeFiles/lab7.dir/build.make CMakeFiles/lab7.dir/clean
-.PHONY : CMakeFiles/lab7.dir/clean
+CMakeFiles/lab7_default.dir/clean:
+	$(MAKE) -f CMakeFiles/lab7_default.dir/build.make CMakeFiles/lab7_default.dir/clean
+.PHONY : CMakeFiles/lab7_default.dir/clean
 
 #=============================================================================
 # Target rules for target MatrixDefault/CMakeFiles/matrix_default_lib.dir

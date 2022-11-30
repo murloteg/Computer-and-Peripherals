@@ -1,17 +1,4 @@
 /usr/bin/cmake -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - Unix Makefiles" -S /tmp/tmp.pvCGNGlOyC -B /tmp/tmp.pvCGNGlOyC/cmake-build-release-evm
--- MKL_ARCH: intel64
--- MKL_ROOT /opt/intel/oneapi/mkl/2022.2.0
--- MKL_LINK: dynamic
--- MKL_INTERFACE_FULL: intel_ilp64
--- MKL_THREADING: intel_thread
--- MKL_MPI: intelmpi
--- Found MKL: intelmpi  
--- Found MKL: /opt/intel/oneapi/mkl/2022.2.0  
--- Found MKL: /opt/intel/oneapi/mkl/2022.2.0/lib/intel64/libmkl_intel_ilp64.so  
--- Found MKL: /opt/intel/oneapi/mkl/2022.2.0/lib/intel64/libmkl_core.so  
--- Found MKL: /opt/intel/oneapi/mkl/2022.2.0/lib/intel64/libmkl_intel_thread.so  
--- Found MKL: /opt/intel/oneapi/compiler/latest/linux/compiler/lib/intel64/libiomp5.so  
--- found BLAS
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /tmp/tmp.pvCGNGlOyC/cmake-build-release-evm

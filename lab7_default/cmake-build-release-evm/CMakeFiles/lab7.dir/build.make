@@ -57,33 +57,29 @@ include CMakeFiles/lab7.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/lab7.dir/flags.make
 
-CMakeFiles/lab7.dir/SSE2_vectorization.cpp.o: CMakeFiles/lab7.dir/flags.make
-CMakeFiles/lab7.dir/SSE2_vectorization.cpp.o: ../SSE2_vectorization.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab7.dir/SSE2_vectorization.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab7.dir/SSE2_vectorization.cpp.o -c /tmp/tmp.pvCGNGlOyC/SSE2_vectorization.cpp
+CMakeFiles/lab7.dir/disable_vectorization.cpp.o: CMakeFiles/lab7.dir/flags.make
+CMakeFiles/lab7.dir/disable_vectorization.cpp.o: ../disable_vectorization.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab7.dir/disable_vectorization.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab7.dir/disable_vectorization.cpp.o -c /tmp/tmp.pvCGNGlOyC/disable_vectorization.cpp
 
-CMakeFiles/lab7.dir/SSE2_vectorization.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab7.dir/SSE2_vectorization.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.pvCGNGlOyC/SSE2_vectorization.cpp > CMakeFiles/lab7.dir/SSE2_vectorization.cpp.i
+CMakeFiles/lab7.dir/disable_vectorization.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab7.dir/disable_vectorization.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.pvCGNGlOyC/disable_vectorization.cpp > CMakeFiles/lab7.dir/disable_vectorization.cpp.i
 
-CMakeFiles/lab7.dir/SSE2_vectorization.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab7.dir/SSE2_vectorization.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.pvCGNGlOyC/SSE2_vectorization.cpp -o CMakeFiles/lab7.dir/SSE2_vectorization.cpp.s
+CMakeFiles/lab7.dir/disable_vectorization.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab7.dir/disable_vectorization.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.pvCGNGlOyC/disable_vectorization.cpp -o CMakeFiles/lab7.dir/disable_vectorization.cpp.s
 
 # Object files for target lab7
 lab7_OBJECTS = \
-"CMakeFiles/lab7.dir/SSE2_vectorization.cpp.o"
+"CMakeFiles/lab7.dir/disable_vectorization.cpp.o"
 
 # External object files for target lab7
 lab7_EXTERNAL_OBJECTS =
 
-lab7: CMakeFiles/lab7.dir/SSE2_vectorization.cpp.o
+lab7: CMakeFiles/lab7.dir/disable_vectorization.cpp.o
 lab7: CMakeFiles/lab7.dir/build.make
 lab7: MatrixDefault/libmatrix_default_lib.a
-lab7: /opt/intel/oneapi/mkl/2022.2.0/lib/intel64/libmkl_intel_ilp64.so
-lab7: /opt/intel/oneapi/mkl/2022.2.0/lib/intel64/libmkl_core.so
-lab7: /opt/intel/oneapi/mkl/2022.2.0/lib/intel64/libmkl_intel_thread.so
-lab7: /opt/intel/oneapi/compiler/latest/linux/compiler/lib/intel64/libiomp5.so
 lab7: CMakeFiles/lab7.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tmp/tmp.pvCGNGlOyC/cmake-build-release-evm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable lab7"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/lab7.dir/link.txt --verbose=$(VERBOSE)

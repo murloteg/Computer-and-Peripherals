@@ -1,4 +1,4 @@
-# Install script for directory: /Users/mac/CLionProjects/EVM-Projects/lab7/MatrixDefault
+# Install script for directory: /Users/mac/CLionProjects/EVM-Projects/lab7_default/MatrixDefault
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

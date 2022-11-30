@@ -153,8 +153,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/Users/mac/CLionProjects/EVM-Projects/lab7/cmake-build-debug",
-		"source" : "/Users/mac/CLionProjects/EVM-Projects/lab7"
+		"build" : "/Users/mac/CLionProjects/EVM-Projects/lab7_default/cmake-build-debug",
+		"source" : "/Users/mac/CLionProjects/EVM-Projects/lab7_default"
 	},
 	"version" : 
 	{
