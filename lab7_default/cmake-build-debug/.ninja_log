@@ -1,0 +1,10 @@
+# ninja log v5
+4	996	1669814626297646785	CMakeFiles/lab7.dir/SSE2_vectorization.cpp.o	2697318c021c6981
+3	660	1669811820723553618	MatrixDefault/CMakeFiles/matrix_default_lib.dir/MatrixDEFAULT.cpp.o	6496ddd0472f107b
+660	780	1669811820851586000	MatrixDefault/libmatrix_default_lib.a	cb27928af42c014f
+3	859	1669730464228196905	CMakeFiles/lab7.dir/AVX_vectorization.cpp.o	e970e27f5cb1d76c
+888	969	1669814722291702451	lab7	85f181dcd9b8f0ea
+0	130	1669815272363352849	build.ninja	367622f5ef1d012e
+3	887	1669814722204181303	CMakeFiles/lab7.dir/disable_vectorization.cpp.o	f854ac8984cc93d9
+3	948	1669815304996977869	CMakeFiles/lab7.dir/SSE2_vectorization.cpp.o	2697318c021c6981
+949	1018	1669815305071620521	lab7	fa5556987e9aa13f
