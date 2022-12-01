@@ -1,4 +1,4 @@
-#ifndef LAB7_MATRIXBLAS_H
+#ifndef LAB7_MATRIX_H
 #define LAB7_MATRIX_H
 #include <iostream>
 #include <chrono>
@@ -41,4 +41,4 @@ Matrix FindTransformedMatrix(Matrix& generalMatrix);
 Matrix FindMatrixOfSeries(Matrix& generalMatrix, Matrix& transformedMatrix);
 Matrix FindInverseMatrixAlgorithm(Matrix& generalMatrix, int numberOfIterations);
 
-#endif //LAB7_MATRIXBLAS_H
+#endif //LAB7_MATRIX_H

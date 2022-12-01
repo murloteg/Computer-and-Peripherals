@@ -16,6 +16,7 @@ int main(int argc, char** argv)
     Matrix result = FindInverseMatrixAlgorithm(generalMatrix, numberOfIterations);
 
     Matrix checkMatrix = result * generalMatrix;
+//    checkMatrix.printMatrix();
     checkMatrix.findMatrixNorms();
     std::cout << "The first and the infinity NORMS: " << checkMatrix.getFirstNorm() << " " << checkMatrix.getInfinityNorm() << std::endl;
     std::chrono::time_point<std::chrono::high_resolution_clock> end = std::chrono::high_resolution_clock::now();

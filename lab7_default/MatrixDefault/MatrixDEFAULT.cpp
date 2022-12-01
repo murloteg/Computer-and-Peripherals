@@ -80,8 +80,8 @@ Matrix Matrix::transposeMatrix()
 
 void Matrix::findMatrixNorms()
 {
-    float maxSumOfColumn = std::numeric_limits<float>::min();;
-    float maxSumOfLine = std::numeric_limits<float>::min();;
+    float maxSumOfColumn = std::numeric_limits<float>::min();
+    float maxSumOfLine = std::numeric_limits<float>::min();
     for (int j = 0; j < matrixSize_; ++j)
     {
         float currentSumOfColumn = 0;
@@ -104,7 +104,11 @@ void Matrix::printMatrix()
     {
         for (int j = 0; j < matrixSize_; ++j)
         {
-            printf("%.3f ", matrix_[i * matrixSize_ + j]);
+            if (matrix_[i * matrixSize_ + j] > 0)
+            {
+                printf(" ");
+            }
+            printf("%.4f ", matrix_[i * matrixSize_ + j]);
         }
         printf("\n");
     }
@@ -205,18 +209,20 @@ Matrix& Matrix::operator+=(const Matrix& other)
 Matrix& Matrix::operator*=(const Matrix& other)
 {
     Matrix result(this->matrixSize_);
-    for (int k = 0; k < result.matrixSize_; ++k)
+    for (int i = 0; i < matrixSize_; ++i)
     {
-        for (int i = 0; i < result.matrixSize_; ++i)
+        float* resultMatrix = result.matrix_ + i * matrixSize_;
+        for (int k = 0; k < matrixSize_; ++k)
         {
-            float currentSum = 0;
-            for (int j = 0; j < result.matrixSize_; ++j)
+            const float* secondMatrix = other.matrix_ + k * matrixSize_;
+            float firstMatrix = this->matrix_[i*matrixSize_ + k];
+            for (int j = 0; j < matrixSize_; ++j)
             {
-                currentSum += this->matrix_[i * matrixSize_ + k] * other.matrix_[k * matrixSize_ + j];
+                resultMatrix[j] += firstMatrix * secondMatrix[j];
             }
-            result.matrix_[i * matrixSize_ + k] = currentSum;
         }
     }
+
     *this = result;
     return *this;
 }
