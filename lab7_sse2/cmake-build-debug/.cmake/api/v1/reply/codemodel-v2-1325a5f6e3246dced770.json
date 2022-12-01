@@ -6,6 +6,10 @@
 			[
 				{
 					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
 					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
@@ -17,6 +21,21 @@
 					[
 						0
 					]
+				},
+				{
+					"build" : "MatrixSSE2",
+					"jsonFile" : "directory-MatrixSSE2-Debug-1c0b1f4d4326e24000aa.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16.3"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "MatrixSSE2",
+					"targetIndexes" : 
+					[
+						1
+					]
 				}
 			],
 			"name" : "Debug",
@@ -25,12 +44,14 @@
 				{
 					"directoryIndexes" : 
 					[
-						0
+						0,
+						1
 					],
 					"name" : "lab7_sse2",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -39,8 +60,15 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "lab7_sse2::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-lab7_sse2-Debug-99107f7598d7f8f5b53a.json",
+					"jsonFile" : "target-lab7_sse2-Debug-6390657e227435f9305b.json",
 					"name" : "lab7_sse2",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "matrix_sse2_lib::@15d16ceb0862a16729fa",
+					"jsonFile" : "target-matrix_sse2_lib-Debug-f3c67737bcf4eeeb7951.json",
+					"name" : "matrix_sse2_lib",
 					"projectIndex" : 0
 				}
 			]

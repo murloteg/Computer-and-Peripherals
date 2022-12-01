@@ -10,7 +10,9 @@
 	{
 		"commands" : 
 		[
-			"add_executable"
+			"add_executable",
+			"target_link_libraries",
+			"target_include_directories"
 		],
 		"files" : 
 		[
@@ -26,6 +28,18 @@
 				"file" : 0,
 				"line" : 7,
 				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 11,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 10,
+				"parent" : 0
 			}
 		]
 	},
@@ -39,6 +53,13 @@
 				},
 				{
 					"fragment" : "-std=gnu++17"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
+					"path" : "/Users/mac/CLionProjects/EVM-Projects/lab7_sse2/MatrixSSE2"
 				}
 			],
 			"language" : "CXX",
@@ -56,6 +77,13 @@
 			]
 		}
 	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "matrix_sse2_lib::@15d16ceb0862a16729fa"
+		}
+	],
 	"id" : "lab7_sse2::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
@@ -68,6 +96,11 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "MatrixSSE2/libmatrix_sse2_lib.a",
+				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"

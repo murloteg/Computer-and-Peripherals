@@ -6,6 +6,6 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(lab7_sse2 SSE2_vectorization.cpp)
 
-#add_subdirectory(MatrixDefault)
-#target_include_directories(lab7 PUBLIC MatrixDefault)
-#target_link_libraries(lab7 PUBLIC matrix_default_lib)
+add_subdirectory(MatrixSSE2)
+target_include_directories(lab7_sse2 PUBLIC MatrixSSE2)
+target_link_libraries(lab7_sse2 PUBLIC matrix_sse2_lib)

@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm/CMakeFiles /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm/CMakeFiles/progress.marks
-	$(MAKE) -f CMakeFiles/Makefile2 all
+	cd /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm && $(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm/CMakeFiles /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm/MatrixSSE2/CMakeFiles/progress.marks
+	cd /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm && $(MAKE) -f CMakeFiles/Makefile2 MatrixSSE2/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) -f CMakeFiles/Makefile2 clean
+	cd /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm && $(MAKE) -f CMakeFiles/Makefile2 MatrixSSE2/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,71 +97,60 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm && $(MAKE) -f CMakeFiles/Makefile2 MatrixSSE2/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm && $(MAKE) -f CMakeFiles/Makefile2 MatrixSSE2/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named lab7_sse2
+# Convenience name for target.
+MatrixSSE2/CMakeFiles/matrix_sse2_lib.dir/rule:
+	cd /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm && $(MAKE) -f CMakeFiles/Makefile2 MatrixSSE2/CMakeFiles/matrix_sse2_lib.dir/rule
+.PHONY : MatrixSSE2/CMakeFiles/matrix_sse2_lib.dir/rule
 
-# Build rule for target.
-lab7_sse2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 lab7_sse2
-.PHONY : lab7_sse2
+# Convenience name for target.
+matrix_sse2_lib: MatrixSSE2/CMakeFiles/matrix_sse2_lib.dir/rule
 
-# fast build rule for target.
-lab7_sse2/fast:
-	$(MAKE) -f CMakeFiles/lab7_sse2.dir/build.make CMakeFiles/lab7_sse2.dir/build
-.PHONY : lab7_sse2/fast
-
-#=============================================================================
-# Target rules for targets named matrix_sse2_lib
-
-# Build rule for target.
-matrix_sse2_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 matrix_sse2_lib
 .PHONY : matrix_sse2_lib
 
 # fast build rule for target.
 matrix_sse2_lib/fast:
-	$(MAKE) -f MatrixSSE2/CMakeFiles/matrix_sse2_lib.dir/build.make MatrixSSE2/CMakeFiles/matrix_sse2_lib.dir/build
+	cd /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm && $(MAKE) -f MatrixSSE2/CMakeFiles/matrix_sse2_lib.dir/build.make MatrixSSE2/CMakeFiles/matrix_sse2_lib.dir/build
 .PHONY : matrix_sse2_lib/fast
 
-SSE2_vectorization.o: SSE2_vectorization.cpp.o
+Matrix.o: Matrix.cpp.o
 
-.PHONY : SSE2_vectorization.o
+.PHONY : Matrix.o
 
 # target to build an object file
-SSE2_vectorization.cpp.o:
-	$(MAKE) -f CMakeFiles/lab7_sse2.dir/build.make CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.o
-.PHONY : SSE2_vectorization.cpp.o
+Matrix.cpp.o:
+	cd /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm && $(MAKE) -f MatrixSSE2/CMakeFiles/matrix_sse2_lib.dir/build.make MatrixSSE2/CMakeFiles/matrix_sse2_lib.dir/Matrix.cpp.o
+.PHONY : Matrix.cpp.o
 
-SSE2_vectorization.i: SSE2_vectorization.cpp.i
+Matrix.i: Matrix.cpp.i
 
-.PHONY : SSE2_vectorization.i
+.PHONY : Matrix.i
 
 # target to preprocess a source file
-SSE2_vectorization.cpp.i:
-	$(MAKE) -f CMakeFiles/lab7_sse2.dir/build.make CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.i
-.PHONY : SSE2_vectorization.cpp.i
+Matrix.cpp.i:
+	cd /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm && $(MAKE) -f MatrixSSE2/CMakeFiles/matrix_sse2_lib.dir/build.make MatrixSSE2/CMakeFiles/matrix_sse2_lib.dir/Matrix.cpp.i
+.PHONY : Matrix.cpp.i
 
-SSE2_vectorization.s: SSE2_vectorization.cpp.s
+Matrix.s: Matrix.cpp.s
 
-.PHONY : SSE2_vectorization.s
+.PHONY : Matrix.s
 
 # target to generate assembly for a file
-SSE2_vectorization.cpp.s:
-	$(MAKE) -f CMakeFiles/lab7_sse2.dir/build.make CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.s
-.PHONY : SSE2_vectorization.cpp.s
+Matrix.cpp.s:
+	cd /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm && $(MAKE) -f MatrixSSE2/CMakeFiles/matrix_sse2_lib.dir/build.make MatrixSSE2/CMakeFiles/matrix_sse2_lib.dir/Matrix.cpp.s
+.PHONY : Matrix.cpp.s
 
 # Help Target
 help:
@@ -171,11 +160,10 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... lab7_sse2"
 	@echo "... matrix_sse2_lib"
-	@echo "... SSE2_vectorization.o"
-	@echo "... SSE2_vectorization.i"
-	@echo "... SSE2_vectorization.s"
+	@echo "... Matrix.o"
+	@echo "... Matrix.i"
+	@echo "... Matrix.s"
 .PHONY : help
 
 
@@ -187,6 +175,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

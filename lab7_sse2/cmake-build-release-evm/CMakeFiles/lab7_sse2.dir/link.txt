@@ -1,1 +1,1 @@
-/usr/bin/c++   -march=native -O3 -DNDEBUG   CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.o  -o lab7_sse2 
+/usr/bin/c++   -march=native -O3 -DNDEBUG   CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.o  -o lab7_sse2  MatrixSSE2/libmatrix_sse2_lib.a 

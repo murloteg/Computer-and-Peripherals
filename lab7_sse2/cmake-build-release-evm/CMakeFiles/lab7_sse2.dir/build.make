@@ -79,6 +79,7 @@ lab7_sse2_EXTERNAL_OBJECTS =
 
 lab7_sse2: CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.o
 lab7_sse2: CMakeFiles/lab7_sse2.dir/build.make
+lab7_sse2: MatrixSSE2/libmatrix_sse2_lib.a
 lab7_sse2: CMakeFiles/lab7_sse2.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable lab7_sse2"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/lab7_sse2.dir/link.txt --verbose=$(VERBOSE)

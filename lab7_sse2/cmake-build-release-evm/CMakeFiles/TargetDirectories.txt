@@ -1,3 +1,6 @@
 /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm/CMakeFiles/rebuild_cache.dir
 /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm/CMakeFiles/edit_cache.dir
 /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm/CMakeFiles/lab7_sse2.dir
+/tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm/MatrixSSE2/CMakeFiles/rebuild_cache.dir
+/tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm/MatrixSSE2/CMakeFiles/edit_cache.dir
+/tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm/MatrixSSE2/CMakeFiles/matrix_sse2_lib.dir
