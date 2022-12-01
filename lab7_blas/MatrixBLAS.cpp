@@ -269,9 +269,16 @@ Matrix FindInverseMatrixAlgorithm(Matrix& generalMatrix, int numberOfIterations)
     for (int i = 0; i < numberOfIterations; ++i)
     {
         result += currentMultiplier;
-        currentMultiplier *= matrixOfSeries;
+        currentMultiplier = currentMultiplier * matrixOfSeries;
     }
 
-    result *= transformedMatrix;
+    result = result * transformedMatrix;
     return result;
 }
+
+/*
+ *  0.100 0.000 0.280 0.240
+    0.200 0.060 0.000 0.320
+    0.300 0.120 0.070 0.000
+    0.400 0.180 0.140 0.080
+ */

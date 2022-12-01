@@ -14,6 +14,7 @@ int main(int argc, char** argv)
     Matrix generalMatrix = Matrix(matrixSize);
     generalMatrix.setMatrix();
     Matrix result = FindInverseMatrixAlgorithm(generalMatrix, numberOfIterations);
+//    result.printMatrix();
 
     Matrix checkMatrix = result * generalMatrix;
     checkMatrix.findMatrixNorms();
