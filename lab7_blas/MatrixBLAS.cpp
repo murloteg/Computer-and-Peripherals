@@ -104,7 +104,11 @@ void Matrix::printMatrix()
     {
         for (int j = 0; j < matrixSize_; ++j)
         {
-            printf("%.3f ", matrix_[i * matrixSize_ + j]);
+            if (matrix_[i * matrixSize_ + j] >= 0)
+            {
+                printf(" ");
+            }
+            printf("%.4f ", matrix_[i * matrixSize_ + j]);
         }
         printf("\n");
     }
@@ -117,7 +121,11 @@ void Matrix::printMatrix() const
     {
         for (int j = 0; j < matrixSize_; ++j)
         {
-            printf("%.3f ", matrix_[i * matrixSize_ + j]);
+            if (matrix_[i * matrixSize_ + j] >= 0)
+            {
+                printf(" ");
+            }
+            printf("%.4f ", matrix_[i * matrixSize_ + j]);
         }
         printf("\n");
     }
@@ -275,10 +283,3 @@ Matrix FindInverseMatrixAlgorithm(Matrix& generalMatrix, int numberOfIterations)
     result = result * transformedMatrix;
     return result;
 }
-
-/*
- *  0.100 0.000 0.280 0.240
-    0.200 0.060 0.000 0.320
-    0.300 0.120 0.070 0.000
-    0.400 0.180 0.140 0.080
- */

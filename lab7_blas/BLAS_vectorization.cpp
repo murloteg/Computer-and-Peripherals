@@ -1,4 +1,5 @@
 #include "MatrixBLAS.h"
+#include <chrono>
 
 int main(int argc, char** argv)
 {
@@ -11,10 +12,9 @@ int main(int argc, char** argv)
     std::chrono::time_point<std::chrono::high_resolution_clock> start = std::chrono::high_resolution_clock::now();
     int matrixSize = static_cast<int> (strtol(argv[1], nullptr, 10));
     int numberOfIterations = static_cast<int> (strtol(argv[2], nullptr, 10));
-    Matrix generalMatrix = Matrix(matrixSize);
+    Matrix generalMatrix(matrixSize);
     generalMatrix.setMatrix();
     Matrix result = FindInverseMatrixAlgorithm(generalMatrix, numberOfIterations);
-//    result.printMatrix();
 
     Matrix checkMatrix = result * generalMatrix;
     checkMatrix.findMatrixNorms();

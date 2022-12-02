@@ -1,8 +1,6 @@
 #ifndef LAB7_MATRIXBLAS_H
 #define LAB7_MATRIXBLAS_H
 #include <iostream>
-#include <chrono>
-#include <valarray>
 #include "mkl_cblas.h"
 
 class Matrix {
