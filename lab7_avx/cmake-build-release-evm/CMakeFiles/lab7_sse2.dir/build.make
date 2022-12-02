@@ -57,28 +57,29 @@ include CMakeFiles/lab7_sse2.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/lab7_sse2.dir/flags.make
 
-CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.o: CMakeFiles/lab7_sse2.dir/flags.make
-CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.o: ../SSE2_vectorization.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.o -c /tmp/tmp.Lwqrj2HLdi/SSE2_vectorization.cpp
+CMakeFiles/lab7_sse2.dir/AVX_vectorization.cpp.o: CMakeFiles/lab7_sse2.dir/flags.make
+CMakeFiles/lab7_sse2.dir/AVX_vectorization.cpp.o: ../AVX_vectorization.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab7_sse2.dir/AVX_vectorization.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab7_sse2.dir/AVX_vectorization.cpp.o -c /tmp/tmp.Lwqrj2HLdi/AVX_vectorization.cpp
 
-CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.Lwqrj2HLdi/SSE2_vectorization.cpp > CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.i
+CMakeFiles/lab7_sse2.dir/AVX_vectorization.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab7_sse2.dir/AVX_vectorization.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.Lwqrj2HLdi/AVX_vectorization.cpp > CMakeFiles/lab7_sse2.dir/AVX_vectorization.cpp.i
 
-CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.Lwqrj2HLdi/SSE2_vectorization.cpp -o CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.s
+CMakeFiles/lab7_sse2.dir/AVX_vectorization.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab7_sse2.dir/AVX_vectorization.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.Lwqrj2HLdi/AVX_vectorization.cpp -o CMakeFiles/lab7_sse2.dir/AVX_vectorization.cpp.s
 
 # Object files for target lab7_sse2
 lab7_sse2_OBJECTS = \
-"CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.o"
+"CMakeFiles/lab7_sse2.dir/AVX_vectorization.cpp.o"
 
 # External object files for target lab7_sse2
 lab7_sse2_EXTERNAL_OBJECTS =
 
-lab7_sse2: CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.o
+lab7_sse2: CMakeFiles/lab7_sse2.dir/AVX_vectorization.cpp.o
 lab7_sse2: CMakeFiles/lab7_sse2.dir/build.make
+lab7_sse2: MatrixAVX/libmatrix_avx_lib.a
 lab7_sse2: CMakeFiles/lab7_sse2.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable lab7_sse2"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/lab7_sse2.dir/link.txt --verbose=$(VERBOSE)

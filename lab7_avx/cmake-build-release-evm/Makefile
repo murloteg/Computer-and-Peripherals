@@ -111,44 +111,57 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named lab7_sse2
+# Target rules for targets named lab7_avx
 
 # Build rule for target.
-lab7_sse2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 lab7_sse2
-.PHONY : lab7_sse2
+lab7_avx: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 lab7_avx
+.PHONY : lab7_avx
 
 # fast build rule for target.
-lab7_sse2/fast:
-	$(MAKE) -f CMakeFiles/lab7_sse2.dir/build.make CMakeFiles/lab7_sse2.dir/build
-.PHONY : lab7_sse2/fast
+lab7_avx/fast:
+	$(MAKE) -f CMakeFiles/lab7_avx.dir/build.make CMakeFiles/lab7_avx.dir/build
+.PHONY : lab7_avx/fast
 
-SSE2_vectorization.o: SSE2_vectorization.cpp.o
+#=============================================================================
+# Target rules for targets named matrix_avx_lib
 
-.PHONY : SSE2_vectorization.o
+# Build rule for target.
+matrix_avx_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 matrix_avx_lib
+.PHONY : matrix_avx_lib
+
+# fast build rule for target.
+matrix_avx_lib/fast:
+	$(MAKE) -f MatrixAVX/CMakeFiles/matrix_avx_lib.dir/build.make MatrixAVX/CMakeFiles/matrix_avx_lib.dir/build
+.PHONY : matrix_avx_lib/fast
+
+AVX_vectorization.o: AVX_vectorization.cpp.o
+
+.PHONY : AVX_vectorization.o
 
 # target to build an object file
-SSE2_vectorization.cpp.o:
-	$(MAKE) -f CMakeFiles/lab7_sse2.dir/build.make CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.o
-.PHONY : SSE2_vectorization.cpp.o
+AVX_vectorization.cpp.o:
+	$(MAKE) -f CMakeFiles/lab7_avx.dir/build.make CMakeFiles/lab7_avx.dir/AVX_vectorization.cpp.o
+.PHONY : AVX_vectorization.cpp.o
 
-SSE2_vectorization.i: SSE2_vectorization.cpp.i
+AVX_vectorization.i: AVX_vectorization.cpp.i
 
-.PHONY : SSE2_vectorization.i
+.PHONY : AVX_vectorization.i
 
 # target to preprocess a source file
-SSE2_vectorization.cpp.i:
-	$(MAKE) -f CMakeFiles/lab7_sse2.dir/build.make CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.i
-.PHONY : SSE2_vectorization.cpp.i
+AVX_vectorization.cpp.i:
+	$(MAKE) -f CMakeFiles/lab7_avx.dir/build.make CMakeFiles/lab7_avx.dir/AVX_vectorization.cpp.i
+.PHONY : AVX_vectorization.cpp.i
 
-SSE2_vectorization.s: SSE2_vectorization.cpp.s
+AVX_vectorization.s: AVX_vectorization.cpp.s
 
-.PHONY : SSE2_vectorization.s
+.PHONY : AVX_vectorization.s
 
 # target to generate assembly for a file
-SSE2_vectorization.cpp.s:
-	$(MAKE) -f CMakeFiles/lab7_sse2.dir/build.make CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.s
-.PHONY : SSE2_vectorization.cpp.s
+AVX_vectorization.cpp.s:
+	$(MAKE) -f CMakeFiles/lab7_avx.dir/build.make CMakeFiles/lab7_avx.dir/AVX_vectorization.cpp.s
+.PHONY : AVX_vectorization.cpp.s
 
 # Help Target
 help:
@@ -158,10 +171,11 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... lab7_sse2"
-	@echo "... SSE2_vectorization.o"
-	@echo "... SSE2_vectorization.i"
-	@echo "... SSE2_vectorization.s"
+	@echo "... lab7_avx"
+	@echo "... matrix_avx_lib"
+	@echo "... AVX_vectorization.o"
+	@echo "... AVX_vectorization.i"
+	@echo "... AVX_vectorization.s"
 .PHONY : help
 
 

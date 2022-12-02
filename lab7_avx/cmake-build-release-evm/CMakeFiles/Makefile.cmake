@@ -50,5 +50,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/lab7_sse2.dir/DependInfo.cmake"
+  "CMakeFiles/lab7_avx.dir/DependInfo.cmake"
+  "MatrixAVX/CMakeFiles/matrix_avx_lib.dir/DependInfo.cmake"
   )

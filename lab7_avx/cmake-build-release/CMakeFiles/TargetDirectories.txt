@@ -1,0 +1,6 @@
+/Users/mac/CLionProjects/EVM-Projects/lab7_avx/cmake-build-release/CMakeFiles/lab7_avx.dir
+/Users/mac/CLionProjects/EVM-Projects/lab7_avx/cmake-build-release/CMakeFiles/edit_cache.dir
+/Users/mac/CLionProjects/EVM-Projects/lab7_avx/cmake-build-release/CMakeFiles/rebuild_cache.dir
+/Users/mac/CLionProjects/EVM-Projects/lab7_avx/cmake-build-release/MatrixAVX/CMakeFiles/matrix_avx_lib.dir
+/Users/mac/CLionProjects/EVM-Projects/lab7_avx/cmake-build-release/MatrixAVX/CMakeFiles/edit_cache.dir
+/Users/mac/CLionProjects/EVM-Projects/lab7_avx/cmake-build-release/MatrixAVX/CMakeFiles/rebuild_cache.dir

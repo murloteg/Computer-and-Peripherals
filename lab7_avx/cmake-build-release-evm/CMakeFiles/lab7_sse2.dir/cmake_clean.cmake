@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/lab7_sse2.dir/SSE2_vectorization.cpp.o"
+  "CMakeFiles/lab7_sse2.dir/AVX_vectorization.cpp.o"
   "lab7_sse2"
   "lab7_sse2.pdb"
 )

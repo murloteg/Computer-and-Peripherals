@@ -1,0 +1,1 @@
+add_library(matrix_avx_lib STATIC Matrix.h Matrix.cpp)

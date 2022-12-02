@@ -21,7 +21,7 @@ int main(int argc, char** argv)
     std::cout << "The first and the infinity NORMS: " << checkMatrix.getFirstNorm() << " " << checkMatrix.getInfinityNorm() << std::endl;
     std::chrono::time_point<std::chrono::high_resolution_clock> end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> totalTime = end - start;
-    std::cout << "SSE2: total time: " << totalTime.count() <<  " sec." << std::endl;
+    std::cout << "AVX: total time: " << totalTime.count() <<  " sec." << std::endl;
 
     return 0;
 }

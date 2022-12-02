@@ -1,0 +1,212 @@
+## This file contains all the build statements describing the
+# compilation DAG.
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# 
+# Which is the root file.
+# =============================================================================
+
+# =============================================================================
+# Project: lab7_avx
+# Configurations: Release
+# =============================================================================
+
+#############################################
+# Minimal version of Ninja required by this file
+
+ninja_required_version = 1.5
+
+
+#############################################
+# Set configuration variable for custom commands.
+
+CONFIGURATION = Release
+# =============================================================================
+# Include auxiliary files.
+
+
+#############################################
+# Include rules file.
+
+include CMakeFiles/rules.ninja
+
+# =============================================================================
+
+#############################################
+# Logical path to working directory; prefix for absolute paths.
+
+cmake_ninja_workdir = /Users/mac/CLionProjects/EVM-Projects/lab7_avx/cmake-build-release/
+# =============================================================================
+# Object build statements for EXECUTABLE target lab7_avx
+
+
+#############################################
+# Order-only phony target for lab7_avx
+
+build cmake_object_order_depends_target_lab7_avx: phony || cmake_object_order_depends_target_matrix_avx_lib
+
+build CMakeFiles/lab7_avx.dir/AVX_vectorization.cpp.o: CXX_COMPILER__lab7_avx_Release /Users/mac/CLionProjects/EVM-Projects/lab7_avx/AVX_vectorization.cpp || cmake_object_order_depends_target_lab7_avx
+  DEP_FILE = CMakeFiles/lab7_avx.dir/AVX_vectorization.cpp.o.d
+  FLAGS = -march=native -O3 -DNDEBUG -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -std=gnu++17
+  INCLUDES = -I/Users/mac/CLionProjects/EVM-Projects/lab7_avx/MatrixAVX
+  OBJECT_DIR = CMakeFiles/lab7_avx.dir
+  OBJECT_FILE_DIR = CMakeFiles/lab7_avx.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target lab7_avx
+
+
+#############################################
+# Link the executable lab7_avx
+
+build lab7_avx: CXX_EXECUTABLE_LINKER__lab7_avx_Release CMakeFiles/lab7_avx.dir/AVX_vectorization.cpp.o | MatrixAVX/libmatrix_avx_lib.a || MatrixAVX/libmatrix_avx_lib.a
+  FLAGS = -march=native -O3 -DNDEBUG -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk
+  LINK_LIBRARIES = MatrixAVX/libmatrix_avx_lib.a
+  OBJECT_DIR = CMakeFiles/lab7_avx.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lab7_avx
+  TARGET_PDB = lab7_avx.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/mac/CLionProjects/EVM-Projects/lab7_avx/cmake-build-release && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build edit_cache: phony CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/mac/CLionProjects/EVM-Projects/lab7_avx/cmake-build-release && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/mac/CLionProjects/EVM-Projects/lab7_avx -B/Users/mac/CLionProjects/EVM-Projects/lab7_avx/cmake-build-release
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build rebuild_cache: phony CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/mac/CLionProjects/EVM-Projects/lab7_avx/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target matrix_avx_lib
+
+
+#############################################
+# Order-only phony target for matrix_avx_lib
+
+build cmake_object_order_depends_target_matrix_avx_lib: phony || MatrixAVX/CMakeFiles/matrix_avx_lib.dir
+
+build MatrixAVX/CMakeFiles/matrix_avx_lib.dir/Matrix.cpp.o: CXX_COMPILER__matrix_avx_lib_Release /Users/mac/CLionProjects/EVM-Projects/lab7_avx/MatrixAVX/Matrix.cpp || cmake_object_order_depends_target_matrix_avx_lib
+  DEP_FILE = MatrixAVX/CMakeFiles/matrix_avx_lib.dir/Matrix.cpp.o.d
+  FLAGS = -march=native -O3 -DNDEBUG -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -std=gnu++17
+  OBJECT_DIR = MatrixAVX/CMakeFiles/matrix_avx_lib.dir
+  OBJECT_FILE_DIR = MatrixAVX/CMakeFiles/matrix_avx_lib.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target matrix_avx_lib
+
+
+#############################################
+# Link the static library MatrixAVX/libmatrix_avx_lib.a
+
+build MatrixAVX/libmatrix_avx_lib.a: CXX_STATIC_LIBRARY_LINKER__matrix_avx_lib_Release MatrixAVX/CMakeFiles/matrix_avx_lib.dir/Matrix.cpp.o
+  ARCH_FLAGS = -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk
+  LANGUAGE_COMPILE_FLAGS = -march=native -O3 -DNDEBUG
+  OBJECT_DIR = MatrixAVX/CMakeFiles/matrix_avx_lib.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = MatrixAVX/libmatrix_avx_lib.a
+  TARGET_PDB = matrix_avx_lib.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build MatrixAVX/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/mac/CLionProjects/EVM-Projects/lab7_avx/cmake-build-release/MatrixAVX && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build MatrixAVX/edit_cache: phony MatrixAVX/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build MatrixAVX/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/mac/CLionProjects/EVM-Projects/lab7_avx/cmake-build-release/MatrixAVX && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/mac/CLionProjects/EVM-Projects/lab7_avx -B/Users/mac/CLionProjects/EVM-Projects/lab7_avx/cmake-build-release
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build MatrixAVX/rebuild_cache: phony MatrixAVX/CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Target aliases.
+
+build libmatrix_avx_lib.a: phony MatrixAVX/libmatrix_avx_lib.a
+
+build matrix_avx_lib: phony MatrixAVX/libmatrix_avx_lib.a
+
+# =============================================================================
+# Folder targets.
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/mac/CLionProjects/EVM-Projects/lab7_avx/cmake-build-release
+
+build all: phony lab7_avx MatrixAVX/all
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/mac/CLionProjects/EVM-Projects/lab7_avx/cmake-build-release/MatrixAVX
+
+build MatrixAVX/all: phony MatrixAVX/libmatrix_avx_lib.a
+
+# =============================================================================
+# Built-in targets
+
+
+#############################################
+# Re-run CMake if any of its inputs changed.
+
+build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../MatrixAVX/CMakeLists.txt /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake
+  pool = console
+
+
+#############################################
+# A missing CMake input file is not an error.
+
+build ../CMakeLists.txt ../MatrixAVX/CMakeLists.txt /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake: phony
+
+
+#############################################
+# Clean all the built files.
+
+build clean: CLEAN
+
+
+#############################################
+# Print all primary targets available.
+
+build help: HELP
+
+
+#############################################
+# Make the all target the default.
+
+default all

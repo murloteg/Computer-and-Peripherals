@@ -8,10 +8,10 @@
             <mapping deploy="/tmp/tmp.Lwqrj2HLdi" local="$PROJECT_DIR$" />
           </mappings>
           <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release-evm" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-relese" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-relese" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release-evm" />
           </excludedPaths>
         </serverdata>
       </paths>

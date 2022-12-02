@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7_sse2/cmake-build-debug"
+			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7_avx/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -515,7 +515,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7_sse2"
+			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7_avx"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -795,7 +795,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "lab7_sse2"
+			"value" : "lab7_avx"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1078,7 +1078,7 @@
 			"value" : "FALSE"
 		},
 		{
-			"name" : "lab7_BINARY_DIR",
+			"name" : "lab7_avx_BINARY_DIR",
 			"properties" : 
 			[
 				{
@@ -1087,10 +1087,10 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7_sse2/cmake-build-debug"
+			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7_avx/cmake-build-debug"
 		},
 		{
-			"name" : "lab7_IS_TOP_LEVEL",
+			"name" : "lab7_avx_IS_TOP_LEVEL",
 			"properties" : 
 			[
 				{
@@ -1102,7 +1102,7 @@
 			"value" : "ON"
 		},
 		{
-			"name" : "lab7_SOURCE_DIR",
+			"name" : "lab7_avx_SOURCE_DIR",
 			"properties" : 
 			[
 				{
@@ -1111,43 +1111,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7_sse2"
-		},
-		{
-			"name" : "lab7_blas_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7_sse2/cmake-build-debug"
-		},
-		{
-			"name" : "lab7_blas_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "ON"
-		},
-		{
-			"name" : "lab7_blas_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7_sse2"
+			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7_avx"
 		},
 		{
 			"name" : "lab7_sse2_BINARY_DIR",
@@ -1159,7 +1123,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7_sse2/cmake-build-debug"
+			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7_avx/cmake-build-debug"
 		},
 		{
 			"name" : "lab7_sse2_IS_TOP_LEVEL",
@@ -1183,7 +1147,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7_sse2"
+			"value" : "/Users/mac/CLionProjects/EVM-Projects/lab7_avx"
 		}
 	],
 	"kind" : "cache",
