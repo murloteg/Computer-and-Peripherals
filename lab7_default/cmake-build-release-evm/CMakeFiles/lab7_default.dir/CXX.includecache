@@ -11,8 +11,6 @@ iostream
 -
 chrono
 -
-valarray
--
 
 /tmp/tmp.pvCGNGlOyC/disable_vectorization.cpp
 MatrixDefault/MatrixDEFAULT.h

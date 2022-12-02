@@ -1,8 +1,6 @@
 #ifndef LAB7_MATRIX_H
 #define LAB7_MATRIX_H
 #include <iostream>
-#include <chrono>
-#include <valarray>
 
 class Matrix {
 private:

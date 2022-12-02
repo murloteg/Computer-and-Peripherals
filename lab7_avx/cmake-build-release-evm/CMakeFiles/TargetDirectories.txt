@@ -1,0 +1,5 @@
+/tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm/CMakeFiles/rebuild_cache.dir
+/tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm/CMakeFiles/edit_cache.dir
+/tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm/CMakeFiles/lab7_sse2.dir
+/tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm/MatrixAVX/CMakeFiles/rebuild_cache.dir
+/tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm/MatrixAVX/CMakeFiles/edit_cache.dir

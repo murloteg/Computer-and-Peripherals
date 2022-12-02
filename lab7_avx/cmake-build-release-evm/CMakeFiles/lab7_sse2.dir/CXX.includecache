@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../MatrixSSE2/Matrix.h
+iostream
+-
+xmmintrin.h
+-
+chrono
+-
+
+/tmp/tmp.Lwqrj2HLdi/SSE2_vectorization.cpp
+Matrix.h
+/tmp/tmp.Lwqrj2HLdi/Matrix.h
+

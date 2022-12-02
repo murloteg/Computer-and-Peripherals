@@ -104,7 +104,7 @@ void Matrix::printMatrix()
     {
         for (int j = 0; j < matrixSize_; ++j)
         {
-            if (matrix_[i * matrixSize_ + j] > 0)
+            if (matrix_[i * matrixSize_ + j] >= 0)
             {
                 printf(" ");
             }
@@ -121,7 +121,11 @@ void Matrix::printMatrix() const
     {
         for (int j = 0; j < matrixSize_; ++j)
         {
-            printf("%.3f ", matrix_[i * matrixSize_ + j]);
+            if (matrix_[i * matrixSize_ + j] >= 0)
+            {
+                printf(" ");
+            }
+            printf("%.4f ", matrix_[i * matrixSize_ + j]);
         }
         printf("\n");
     }

@@ -1,0 +1,16 @@
+/usr/bin/cmake -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - Unix Makefiles" -S /tmp/tmp.Lwqrj2HLdi -B /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm
+-- Configuring done
+CMake Error at MatrixAVX/CMakeLists.txt:1 (add_library):
+  Cannot find source file:
+
+    Matrix.h
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
+  .hpp .hxx .in .txx
+
+
+CMake Error at MatrixAVX/CMakeLists.txt:1 (add_library):
+  No SOURCES given to target: matrix_avx_lib
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.
