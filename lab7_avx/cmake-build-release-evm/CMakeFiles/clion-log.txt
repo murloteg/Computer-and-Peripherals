@@ -1,4 +1,0 @@
-/usr/bin/cmake -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - Unix Makefiles" -S /tmp/tmp.Lwqrj2HLdi -B /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm
--- Configuring done
--- Generating done
--- Build files have been written to: /tmp/tmp.Lwqrj2HLdi/cmake-build-release-evm

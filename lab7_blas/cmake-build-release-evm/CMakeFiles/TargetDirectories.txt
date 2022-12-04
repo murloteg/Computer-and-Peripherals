@@ -1,3 +1,0 @@
-/tmp/tmp.pvWgD0Cz1j/cmake-build-release-evm/CMakeFiles/rebuild_cache.dir
-/tmp/tmp.pvWgD0Cz1j/cmake-build-release-evm/CMakeFiles/edit_cache.dir
-/tmp/tmp.pvWgD0Cz1j/cmake-build-release-evm/CMakeFiles/lab7_blas.dir

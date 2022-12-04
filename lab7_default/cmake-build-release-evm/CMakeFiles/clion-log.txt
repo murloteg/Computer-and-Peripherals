@@ -1,4 +1,0 @@
-/usr/bin/cmake -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - Unix Makefiles" -S /tmp/tmp.pvCGNGlOyC -B /tmp/tmp.pvCGNGlOyC/cmake-build-release-evm
--- Configuring done
--- Generating done
--- Build files have been written to: /tmp/tmp.pvCGNGlOyC/cmake-build-release-evm

@@ -1,2 +1,0 @@
-/usr/bin/ar qc libmatrix_avx_lib.a  CMakeFiles/matrix_avx_lib.dir/Matrix.cpp.o
-/usr/bin/ranlib libmatrix_avx_lib.a

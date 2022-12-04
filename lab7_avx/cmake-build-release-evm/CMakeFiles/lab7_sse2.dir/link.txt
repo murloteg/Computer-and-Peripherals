@@ -1,1 +1,0 @@
-/usr/bin/c++   -march=native -O3 -DNDEBUG   CMakeFiles/lab7_sse2.dir/AVX_vectorization.cpp.o  -o lab7_sse2  MatrixAVX/libmatrix_avx_lib.a 

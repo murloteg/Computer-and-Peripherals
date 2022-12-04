@@ -1,7 +1,0 @@
-# ninja log v5
-2	967	1669959110425910515	MatrixDefault/CMakeFiles/matrix_default_lib.dir/MatrixDEFAULT.cpp.o	3ab3eccd11fd93e7
-967	1052	1669959110524959000	MatrixDefault/libmatrix_default_lib.a	cb27928af42c014f
-949	1018	1669815305071620521	lab7	fa5556987e9aa13f
-0	130	1669960305516191756	build.ninja	367622f5ef1d012e
-2	997	1669959110455994400	CMakeFiles/lab7_default.dir/disable_vectorization.cpp.o	bf131560c636148d
-1052	1161	1669959110628436605	lab7_default	4a2611fbad888486
