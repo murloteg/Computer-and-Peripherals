@@ -1,7 +1,7 @@
 #ifndef LAB7_MATRIXBLAS_H
 #define LAB7_MATRIXBLAS_H
 #include <iostream>
-#include "mkl_cblas.h"
+#include "cblas.h"
 
 class Matrix {
 private:

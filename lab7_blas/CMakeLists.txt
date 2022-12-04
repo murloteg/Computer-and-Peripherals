@@ -6,10 +6,14 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(lab7_blas BLAS_vectorization.cpp MatrixBLAS.cpp)
 
-find_package(MKL CONFIG)
-if (${MKL_FOUND})
-    message(STATUS "found BLAS")
+target_include_directories(lab7_blas PUBLIC /usr/local/Cellar/openblas/0.3.21/include)
+target_link_libraries(lab7_blas PUBLIC -L/usr/local/Cellar/openblas/0.3.21/lib/ -lopenblas)
 
-    target_include_directories(lab7_blas PUBLIC $<TARGET_PROPERTY:MKL::MKL,INTERFACE_INCLUDE_DIRECTORIES>)
-    target_link_libraries(lab7_blas PUBLIC $<LINK_ONLY:MKL::MKL>)
-endif()
+#### FOR EVM_SERVER: ####
+#find_package(MKL CONFIG)
+#if (${MKL_FOUND})
+#    message(STATUS "found BLAS")
+#
+#    target_include_directories(lab7_blas PUBLIC $<TARGET_PROPERTY:MKL::MKL,INTERFACE_INCLUDE_DIRECTORIES>)
+#    target_link_libraries(lab7_blas PUBLIC $<LINK_ONLY:MKL::MKL>)
+#endif()
