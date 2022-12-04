@@ -4,7 +4,8 @@ Matrix::Matrix(int matrixSize)
 {
     matrixSize_ = matrixSize;
     firstNorm_ = infinityNorm_ = 0;
-    matrix_ = new float [matrixSize_ * matrixSize];
+    matrix_ = new float [matrixSize_ * matrixSize_];
+//    matrix_ = (float*) _mm_malloc(matrixSize_ * matrixSize_ * sizeof(float), 32); // for aligned memory allocation.
     setZeroMatrix();
 }
 
@@ -13,6 +14,7 @@ Matrix::Matrix(const Matrix& origin)
     matrixSize_ = origin.matrixSize_;
     firstNorm_ = infinityNorm_ = 0;
     matrix_ = new float [matrixSize_ * matrixSize_];
+//    matrix_ = (float*) _mm_malloc(matrixSize_ * matrixSize_ * sizeof(float), 32); // for aligned memory allocation.
     for (int i = 0; i < matrixSize_; ++i)
     {
         for (int j = 0; j < matrixSize_; ++j)
@@ -42,6 +44,7 @@ void Matrix::setMatrix()
                                       static_cast<float>((number + 2) % 5), static_cast<float>((number + 3) % 5),
                                       static_cast<float>((number + 4) % 5), static_cast<float>((number + 5) % 5),
                                       static_cast<float>((number + 6) % 5), static_cast<float>((number + 7) % 5));
+//        _mm256_store_ps(matrix_ + i * 8, value); // for aligned memory allocation.
         _mm256_storeu_ps(matrix_ + i * 8, value);
         number += 8;
     }
@@ -143,6 +146,7 @@ void Matrix::swap(Type &first, Type &second)
 
 Matrix::~Matrix()
 {
+//    _mm_free(matrix_); // for aligned memory allocation.
     delete[] matrix_;
     matrix_ = nullptr;
 }
@@ -189,6 +193,13 @@ Matrix &Matrix::operator-=(const Matrix &other)
 {
     for (int i = 0; i < matrixSize_ * matrixSize_ / 8; ++i)
     {
+        /* for aligned memory allocation. */
+//        __m256 firstValue = _mm256_load_ps(this->matrix_ + i * 8);
+//        __m256 secondValue = _mm256_load_ps(other.matrix_ + i * 8);
+//        __m256 resultValue = _mm256_sub_ps(firstValue, secondValue);
+//        _mm256_store_ps(this->matrix_ + i * 8, resultValue);
+
+        /* for unaligned memory allocation. */
         __m256 firstValue = _mm256_loadu_ps(this->matrix_ + i * 8);
         __m256 secondValue = _mm256_loadu_ps(other.matrix_ + i * 8);
         __m256 resultValue = _mm256_sub_ps(firstValue, secondValue);
@@ -202,6 +213,13 @@ Matrix& Matrix::operator+=(const Matrix& other)
 {
     for (int i = 0; i < matrixSize_ * matrixSize_ / 8; ++i)
     {
+        /* for aligned memory allocation. */
+//        __m256 firstValue = _mm256_load_ps(this->matrix_ + i * 8);
+//        __m256 secondValue = _mm256_load_ps(other.matrix_ + i * 8);
+//        __m256 resultValue = _mm256_add_ps(firstValue, secondValue);
+//        _mm256_store_ps(this->matrix_ + i * 8, resultValue);
+
+        /* for unaligned memory allocation. */
         __m256 firstValue = _mm256_loadu_ps(this->matrix_ + i * 8);
         __m256 secondValue = _mm256_loadu_ps(other.matrix_ + i * 8);
         __m256 resultValue = _mm256_add_ps(firstValue, secondValue);
@@ -219,6 +237,10 @@ Matrix& Matrix::operator*=(const Matrix& other)
         float* resultMatrix = result.matrix_ + i * matrixSize_;
         for (int j = 0; j < matrixSize_; j += 8)
         {
+            /* for aligned memory allocation. */
+//            _mm256_store_ps(resultMatrix + j + 0, _mm256_setzero_ps());
+
+            /* for unaligned memory allocation. */
             _mm256_storeu_ps(resultMatrix + j + 0, _mm256_setzero_ps());
         }
         for (int k = 0; k < matrixSize_; ++k)
@@ -227,6 +249,11 @@ Matrix& Matrix::operator*=(const Matrix& other)
             __m256 firstMatrix = _mm256_set1_ps(matrix_[i * matrixSize_ + k]);
             for (int j = 0; j < matrixSize_; j += 16)
             {
+                /* for aligned memory allocation. */
+//                _mm256_store_ps(resultMatrix + j + 0, _mm256_fmadd_ps(firstMatrix, _mm256_load_ps(secondMatrix + j + 0), _mm256_load_ps(resultMatrix + j + 0)));
+//                _mm256_store_ps(resultMatrix + j + 8, _mm256_fmadd_ps(firstMatrix, _mm256_load_ps(secondMatrix + j + 8), _mm256_load_ps(resultMatrix + j + 8)));
+
+                /* for unaligned memory allocation. */
                 _mm256_storeu_ps(resultMatrix + j + 0, _mm256_fmadd_ps(firstMatrix, _mm256_loadu_ps(secondMatrix + j + 0), _mm256_loadu_ps(resultMatrix + j + 0)));
                 _mm256_storeu_ps(resultMatrix + j + 8, _mm256_fmadd_ps(firstMatrix, _mm256_loadu_ps(secondMatrix + j + 8), _mm256_loadu_ps(resultMatrix + j + 8)));
             }
@@ -241,6 +268,13 @@ Matrix &Matrix::operator/=(float coefficient)
 {
     for (int i = 0; i < matrixSize_ * matrixSize_ / 8; ++i)
     {
+        /* for aligned memory allocation. */
+//        __m256 firstValue = _mm256_load_ps(matrix_ + i * 8);
+//        __m256 secondValue = _mm256_set1_ps(coefficient);
+//        __m256 resultValue = _mm256_div_ps(firstValue, secondValue);
+//        _mm256_store_ps(matrix_ + i * 8, resultValue);
+
+        /* for unaligned memory allocation. */
         __m256 firstValue = _mm256_loadu_ps(matrix_ + i * 8);
         __m256 secondValue = _mm256_set1_ps(coefficient);
         __m256 resultValue = _mm256_div_ps(firstValue, secondValue);
