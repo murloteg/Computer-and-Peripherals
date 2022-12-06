@@ -10,41 +10,97 @@ union ticks
     } t32;
 };
 
-unsigned int* GenerateCycleArrayDirectBypass(int number)
+unsigned int* GenerateCycleArrayDirectBypass(int size)
 {
-    auto array = new unsigned int [number];
-    for (int i = 0; i < number - 1; ++i)
+    auto array = new unsigned int [size];
+    for (int i = 0; i < size - 1; ++i)
     {
         array[i] = i + 1;
     }
     return array;
 }
 
-unsigned int* GenerateCycleArrayReverseBypass(int number)
+unsigned int* GenerateCycleArrayReverseBypass(int size)
 {
-    auto array = new unsigned int [number];
-    for (int i = 0; i < number; ++i)
+    auto array = new unsigned int [size];
+    for (int i = 0; i < size; ++i)
     {
-        array[i] = number - i - 1;
+        array[i] = size - i - 1;
     }
     return array;
 }
 
-unsigned int* CheckAndUpdateRandomCycle(unsigned int* array, int size);
-
-unsigned int* GenerateCycleArrayRandomBypass(int number)
+void Swap(unsigned int& first, unsigned int& second)
 {
-    auto used = new bool [number];
-    for (int i = 0; i < number; ++i)
+    unsigned int temporary = first;
+    first = second;
+    second = temporary;
+}
+
+int GetNotVisitedIndex(const bool* used, int size)
+{
+    for (int i = 0; i < size; ++i)
+    {
+        if (!used[i])
+        {
+            return i;
+        }
+    }
+    return 0;
+}
+
+void CheckAndRepairRandomCycle(unsigned int* array, int size) // FIXME
+{
+    auto used = new bool [size];
+    for (int i = 0; i < size; ++i)
+    {
+        used[i] = false;
+    }
+
+    while (true)
+    {
+        int counter = 0;
+        unsigned int currentElem = 0;
+        int lastIndexInCycle = 0;
+        for (int i = 0; i < size; ++i)
+        {
+            if (used[currentElem])
+            {
+                break;
+            }
+            used[currentElem] = true;
+            ++counter;
+            lastIndexInCycle = i;
+            currentElem = array[currentElem];
+        }
+
+        if (counter < size)
+        {
+            int notVisitedIndex = GetNotVisitedIndex(used, size);
+            Swap(array[lastIndexInCycle], array[notVisitedIndex]);
+        }
+
+        else
+        {
+            delete[] used;
+            return;
+        }
+    }
+}
+
+unsigned int* GenerateCycleArrayRandomBypass(int size)
+{
+    auto used = new bool [size];
+    for (int i = 0; i < size; ++i)
     {
         used[i] = false;
     }
     std::random_device dev;
-    auto array = new unsigned int [number];
-    for (int i = 0; i < number; ++i)
+    auto array = new unsigned int [size];
+    for (int i = 0; i < size; ++i)
     {
         std::mt19937 range(dev());
-        std::uniform_int_distribution<std::mt19937::result_type> distance(0, number - 1);
+        std::uniform_int_distribution<std::mt19937::result_type> distance(0, size - 1);
         unsigned int randomValue = distance(range);
         while (used[randomValue])
         {
@@ -54,47 +110,9 @@ unsigned int* GenerateCycleArrayRandomBypass(int number)
         used[randomValue] = true;
     }
     delete[] used;
-//    array = CheckAndUpdateRandomCycle(array, number);
+    CheckAndRepairRandomCycle(array, size);
     return array;
 }
-
-//unsigned int* CheckAndUpdateRandomCycle(unsigned int* array, int size) // FIXME: fix this logic.
-//{
-//    int counter = 0;
-//    auto used = new bool [size];
-//    for (int i = 0; i < size; ++i)
-//    {
-//        used[i] = false;
-//    }
-//
-//    unsigned int currentElem = 0;
-//    for (int i = 0; i < size; ++i)
-//    {
-//        if (counter > 0 && currentElem == 0)
-//        {
-//            break;
-//        }
-//        used[currentElem] = true;
-//        ++counter;
-//        currentElem = array[currentElem];
-//    }
-//
-//    auto newArray = new unsigned int [size];
-//    if (counter < size)
-//    {
-//        delete[] used;
-//        delete[] array;
-//        newArray = GenerateCycleArrayRandomBypass(size);
-//        newArray = CheckAndUpdateRandomCycle(newArray, size);
-//    }
-//
-//    else
-//    {
-//
-//        delete[] used;
-//    }
-//    return newArray;
-//}
 
 void SingleBypassLaunch(const unsigned int* array, int size)
 {
