@@ -1,14 +1,12 @@
 #include <iostream>
 #include <random>
 
-union ticks
+uint64_t rdtsc()
 {
-    unsigned long long t64;
-    struct s32
-    {
-        long th, tl;
-    } t32;
-};
+    unsigned int low, high;
+    __asm__ __volatile__ ("rdtsc" : "=a" (low), "=d" (high));
+    return ((uint64_t) high << 32) | low;
+}
 
 unsigned int* GenerateCycleArrayDirectBypass(int size)
 {
@@ -30,11 +28,11 @@ unsigned int* GenerateCycleArrayReverseBypass(int size)
     return array;
 }
 
-void Swap(unsigned int& first, unsigned int& second)
+void Swap(unsigned int* first, unsigned int* second)
 {
-    unsigned int temporary = first;
-    first = second;
-    second = temporary;
+    unsigned int temporary = *first;
+    *first = *second;
+    *second = temporary;
 }
 
 int GetNotVisitedIndex(const bool* used, int size)
@@ -49,35 +47,33 @@ int GetNotVisitedIndex(const bool* used, int size)
     return 0;
 }
 
-void CheckAndRepairRandomCycle(unsigned int* array, int size) // FIXME
+void CheckAndRepairRandomCycle(unsigned int* array, int size)
 {
     auto used = new bool [size];
-    for (int i = 0; i < size; ++i)
-    {
-        used[i] = false;
-    }
-
     while (true)
     {
-        int counter = 0;
-        unsigned int currentElem = 0;
-        int lastIndexInCycle = 0;
         for (int i = 0; i < size; ++i)
         {
-            if (used[currentElem])
+            used[i] = false;
+        }
+
+        int counter = 0;
+        unsigned int currentElem = 0;
+        for (int i = 0; i < size; ++i)
+        {
+            if (used[currentElem] && counter > 0)
             {
                 break;
             }
             used[currentElem] = true;
             ++counter;
-            lastIndexInCycle = i;
             currentElem = array[currentElem];
         }
 
         if (counter < size)
         {
             int notVisitedIndex = GetNotVisitedIndex(used, size);
-            Swap(array[lastIndexInCycle], array[notVisitedIndex]);
+            Swap(&array[currentElem], &array[notVisitedIndex]);
         }
 
         else
@@ -127,15 +123,14 @@ void DirectBypass(int numberOfBypasses, int size)
 {
     const auto array = GenerateCycleArrayDirectBypass(size);
     SingleBypassLaunch(array, size);
-    ticks start{}, end{};
-    asm volatile("rdtsc\n":"=a"(start.t32.th),"=d"(start.t32.tl)::"memory");
+    uint64_t start = rdtsc();
     unsigned int currentElem = 0;
     for (unsigned long long int i = 0; i < numberOfBypasses * size; ++i)
     {
         currentElem = array[currentElem];
     }
-    asm volatile("rdtsc\n":"=a"(end.t32.th),"=d"(end.t32.tl)::"memory");
-    unsigned int totalClocksDirect = static_cast<unsigned int>(end.t64-start.t64) / (size * numberOfBypasses);
+    uint64_t end = rdtsc();
+    unsigned long int totalClocksDirect = (end - start) / (size * numberOfBypasses);
     std::cout << "DIRECT,  number: " << size << "; clocks: " << totalClocksDirect << std::endl;
     delete[] array;
 }
@@ -144,42 +139,37 @@ void ReverseBypass(int numberOfBypasses, int size)
 {
     const auto array = GenerateCycleArrayReverseBypass(size);
     SingleBypassLaunch(array, size);
-    ticks start{}, end{};
-    asm volatile("rdtsc\n":"=a"(start.t32.th),"=d"(start.t32.tl)::"memory");
+    uint64_t start = rdtsc();
     unsigned int currentElem = 0;
     for (unsigned long long int i = 0; i < numberOfBypasses * size; ++i)
     {
         currentElem = array[currentElem];
     }
-    asm volatile("rdtsc\n":"=a"(end.t32.th),"=d"(end.t32.tl)::"memory");
-    unsigned int totalClocksReverse = static_cast<unsigned int>(end.t64-start.t64) / (size * numberOfBypasses);
+    uint64_t end = rdtsc();
+    unsigned long int totalClocksReverse = (end - start) / (size * numberOfBypasses);
     std::cout << "REVERSE, number: " << size << "; clocks: " << totalClocksReverse << std::endl;
     delete[] array;
-}
-
-void Print(unsigned int* arr, int size)
-{
-    for (int i = 0; i < size; ++i)
-    {
-        std::cout << i << " " << arr[i] << std::endl;
-    }
 }
 
 void RandomBypass(int numberOfBypasses, int size)
 {
     auto array = GenerateCycleArrayRandomBypass(size);
     SingleBypassLaunch(array, size);
-    ticks start{}, end{};
-    asm volatile("rdtsc\n":"=a"(start.t32.th),"=d"(start.t32.tl)::"memory");
+    uint64_t start = rdtsc();
     unsigned int currentElem = 0;
     for (unsigned long long int i = 0; i < numberOfBypasses * size; ++i)
     {
         currentElem = array[currentElem];
     }
-    asm volatile("rdtsc\n":"=a"(end.t32.th),"=d"(end.t32.tl)::"memory");
-    unsigned int totalClocksRandom = static_cast<unsigned int>(end.t64-start.t64) / (size * numberOfBypasses);
+    uint64_t end = rdtsc();
+    unsigned long int totalClocksRandom = (end - start) / (size * numberOfBypasses);
     std::cout << "RANDOM,  number: " << size << "; clocks: " << totalClocksRandom << std::endl;
     delete[] array;
+}
+
+void PrintSeparator()
+{
+    std::cout << "==================================" << std::endl;
 }
 
 int main(int argc, char** argv)
@@ -199,7 +189,7 @@ int main(int argc, char** argv)
         DirectBypass(numberOfBypasses, currentNumber);
         ReverseBypass(numberOfBypasses, currentNumber);
         RandomBypass(numberOfBypasses, currentNumber);
-        std::cout << std::endl;
+        PrintSeparator();
         currentNumber *= 2;
     }
 
