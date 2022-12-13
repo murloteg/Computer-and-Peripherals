@@ -9,7 +9,7 @@
 
 # =============================================================================
 # Project: lab8
-# Configurations: Debug
+# Configurations: Release
 # =============================================================================
 
 #############################################
@@ -21,7 +21,7 @@ ninja_required_version = 1.5
 #############################################
 # Set configuration variable for custom commands.
 
-CONFIGURATION = Debug
+CONFIGURATION = Release
 # =============================================================================
 # Include auxiliary files.
 
@@ -36,7 +36,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /Users/mac/CLionProjects/EVM-Projects/lab8/cmake-build-debug/
+cmake_ninja_workdir = /Users/mac/CLionProjects/EVM-Projects/lab8/cmake-build-release/
 # =============================================================================
 # Object build statements for EXECUTABLE target lab8
 
@@ -46,9 +46,9 @@ cmake_ninja_workdir = /Users/mac/CLionProjects/EVM-Projects/lab8/cmake-build-deb
 
 build cmake_object_order_depends_target_lab8: phony || CMakeFiles/lab8.dir
 
-build CMakeFiles/lab8.dir/main.cpp.o: CXX_COMPILER__lab8_Debug /Users/mac/CLionProjects/EVM-Projects/lab8/main.cpp || cmake_object_order_depends_target_lab8
+build CMakeFiles/lab8.dir/main.cpp.o: CXX_COMPILER__lab8_Release /Users/mac/CLionProjects/EVM-Projects/lab8/main.cpp || cmake_object_order_depends_target_lab8
   DEP_FILE = CMakeFiles/lab8.dir/main.cpp.o.d
-  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -fcolor-diagnostics -std=gnu++17
+  FLAGS = -O3 -DNDEBUG -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -fcolor-diagnostics -std=gnu++17
   OBJECT_DIR = CMakeFiles/lab8.dir
   OBJECT_FILE_DIR = CMakeFiles/lab8.dir
 
@@ -60,8 +60,8 @@ build CMakeFiles/lab8.dir/main.cpp.o: CXX_COMPILER__lab8_Debug /Users/mac/CLionP
 #############################################
 # Link the executable lab8
 
-build lab8: CXX_EXECUTABLE_LINKER__lab8_Debug CMakeFiles/lab8.dir/main.cpp.o
-  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk
+build lab8: CXX_EXECUTABLE_LINKER__lab8_Release CMakeFiles/lab8.dir/main.cpp.o
+  FLAGS = -O3 -DNDEBUG -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk
   OBJECT_DIR = CMakeFiles/lab8.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -73,7 +73,7 @@ build lab8: CXX_EXECUTABLE_LINKER__lab8_Debug CMakeFiles/lab8.dir/main.cpp.o
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/mac/CLionProjects/EVM-Projects/lab8/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /Users/mac/CLionProjects/EVM-Projects/lab8/cmake-build-release && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -84,7 +84,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/mac/CLionProjects/EVM-Projects/lab8/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/mac/CLionProjects/EVM-Projects/lab8 -B/Users/mac/CLionProjects/EVM-Projects/lab8/cmake-build-debug
+  COMMAND = cd /Users/mac/CLionProjects/EVM-Projects/lab8/cmake-build-release && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/mac/CLionProjects/EVM-Projects/lab8 -B/Users/mac/CLionProjects/EVM-Projects/lab8/cmake-build-release
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -100,7 +100,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 
 #############################################
-# Folder: /Users/mac/CLionProjects/EVM-Projects/lab8/cmake-build-debug
+# Folder: /Users/mac/CLionProjects/EVM-Projects/lab8/cmake-build-release
 
 build all: phony lab8
 

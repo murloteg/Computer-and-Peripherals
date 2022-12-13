@@ -1,5 +1,6 @@
 #include <iostream>
 #include <random>
+#define SIZE_COEFFICIENT 1.2
 
 uint64_t rdtsc()
 {
@@ -131,7 +132,7 @@ void DirectBypass(int numberOfBypasses, int size)
     }
     uint64_t end = rdtsc();
     unsigned long int totalClocksDirect = (end - start) / (size * numberOfBypasses);
-    std::cout << "DIRECT,  number: " << size << "; clocks: " << totalClocksDirect << std::endl;
+    std::cout << "DIRECT,  number: " << size * sizeof(unsigned int) << "; clocks: " << totalClocksDirect << std::endl;
     delete[] array;
 }
 
@@ -147,7 +148,7 @@ void ReverseBypass(int numberOfBypasses, int size)
     }
     uint64_t end = rdtsc();
     unsigned long int totalClocksReverse = (end - start) / (size * numberOfBypasses);
-    std::cout << "REVERSE, number: " << size << "; clocks: " << totalClocksReverse << std::endl;
+    std::cout << "REVERSE, number: " << size * sizeof(unsigned int) << "; clocks: " << totalClocksReverse << std::endl;
     delete[] array;
 }
 
@@ -163,7 +164,7 @@ void RandomBypass(int numberOfBypasses, int size)
     }
     uint64_t end = rdtsc();
     unsigned long int totalClocksRandom = (end - start) / (size * numberOfBypasses);
-    std::cout << "RANDOM,  number: " << size << "; clocks: " << totalClocksRandom << std::endl;
+    std::cout << "RANDOM,  number: " << size * sizeof(unsigned int) << "; clocks: " << totalClocksRandom << std::endl;
     delete[] array;
 }
 
@@ -183,14 +184,14 @@ int main(int argc, char** argv)
     int minNumber = static_cast<int>(strtol(argv[1], nullptr, 10));
     int maxNumber = static_cast<int>(strtol(argv[2], nullptr, 10));
     int numberOfBypasses = static_cast<int>(strtol(argv[3], nullptr, 10));
-    int currentNumber = minNumber;
+    double currentNumber = minNumber;
     while (currentNumber <= maxNumber)
     {
-        DirectBypass(numberOfBypasses, currentNumber);
-        ReverseBypass(numberOfBypasses, currentNumber);
-        RandomBypass(numberOfBypasses, currentNumber);
+        DirectBypass(numberOfBypasses, static_cast<int>(currentNumber));
+        ReverseBypass(numberOfBypasses, static_cast<int>(currentNumber));
+        RandomBypass(numberOfBypasses, static_cast<int>(currentNumber));
         PrintSeparator();
-        currentNumber *= 2;
+        currentNumber *= SIZE_COEFFICIENT;
     }
 
     return 0;
